@@ -1,0 +1,28 @@
+alias l="ls -lh"
+alias la="l -a"
+alias lt="tree -d -L 2 -a"
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+alias rmr="rm -rf"
+
+c() {
+	for match in $1*; do
+		[ -d $match ] && cd $match && return
+	done
+}
+
+ch() {
+	[ $# -ne 1 ] && cd /home && return
+	c "/home/$1"
+}
+
+cc() {
+	[ $# -ne 1 ] && cd /home/code && return
+	c /home/code/$1
+}
+
+cr() {
+	cd $(realpath `pwd`)
+}

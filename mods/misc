@@ -1,0 +1,6 @@
+alias su='doas '
+alias brb='su reboot'
+alias bye='su poweroff'
+
+alias ?="type"
+alias wfl="tail -f /tmp/wflog"

@@ -1,0 +1,15 @@
+alias g='git'
+alias gs='g status'
+alias gl='g log -4'
+alias gd='g diff'
+alias gcl='g clone'
+alias ga='g add .'
+alias gu='g push'
+
+gc() {
+	g commit -m "$*"
+}
+
+ghcl() {
+	gcl github:${1}.git ${@:2}
+}

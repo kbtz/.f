@@ -1,0 +1,7 @@
+export PATH="/usr/bin:/home/dots/.local/bin:/home/dots/.local/bino"
+export EDITOR="nvim"
+
+export LANG="en_US.UTF-8"
+export LC_COLLATE="C"
+
+export HISTCONTROL=ignoreboth

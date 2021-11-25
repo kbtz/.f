@@ -1,0 +1,7 @@
+alias n="npm"
+alias ni="n install"
+alias ns="n run start"
+alias nd="n run dev"
+
+alias hs="http-server -p80 -s"
+alias hsl="live-server --port=80 --host=kdev --no-browser"

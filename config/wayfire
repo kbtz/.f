@@ -1,0 +1,148 @@
+[core]
+# decoration \
+# oswitch \
+# expo \
+plugins = \
+  alpha \
+  blur \
+  autostart \
+  command \
+  animate \
+  cube \
+  fast-switcher \
+  grid \
+  invert \
+  move \
+  place \
+  resize \
+  rounded-corners \
+  vswitch \
+  wallpaper \
+  window-rules \
+  wobbly \
+  zoom
+
+# Close focused window.
+close_top_view = <super> KEY_C
+
+# Workspaces arranged into a grid
+vwidth = 3
+vheight = 1 
+
+# Invert the colors of the whole output.
+[invert]
+toggle = <super> KEY_I
+
+[keycolor]
+threshold = 0.1
+opacity = 0.5
+
+[blur]
+blur_by_default = app_id contains "kitty"
+
+[wallpaper:first]
+path = /home/safe/warpx.glsl
+workspaces = 0
+
+[wallpaper:second]
+path = /home/safe/grid.jpeg
+workspaces = 1
+
+[wallpaper:third]
+path = /home/safe/liquid.jpeg
+workspaces = 2
+
+# Mouse bindings 
+
+# Drag windows by holding down Super and left mouse button.
+[move]
+activate = <super> BTN_LEFT
+
+# Resize them with right mouse button + Super.
+[resize]
+activate = <super> BTN_RIGHT
+
+# Zoom in the desktop by scrolling + Super + Control.
+[zoom]
+modifier = <super>
+
+# Change opacity by scrolling with Super.
+[alpha]
+modifier = <super> <alt>
+
+# Startup commands
+[autostart]
+notifications = mako
+
+[idle]
+toggle = <super> KEY_Z
+screensaver_timeout = 300
+dpms_timeout = 6000
+
+# Disables the compositor going idle with Super + z.
+# This will lock your screen after 300 seconds of inactivity, then turn off
+# your displays after another 300 seconds.
+
+# Applications 
+[command]
+binding_terminal = <super> KEY_ENTER
+command_terminal = kitty
+
+binding_launcher = <super> KEY_D
+command_launcher = dmenu_run
+
+# Screenshots
+binding_screenshot_interactive = <super> <shift> KEY_P
+command_screenshot_interactive = slurp | grim -g - $(date '+%F_%T').jpeg
+
+# Volume controls
+# https://alsa-project.org
+repeatable_binding_volume_up = KEY_VOLUMEUP
+command_volume_up = amixer set Master 5%+
+repeatable_binding_volume_down = KEY_VOLUMEDOWN
+command_volume_down = amixer set Master 5%-
+binding_mute = KEY_MUTE
+command_mute = amixer set Master toggle
+
+# Windows 
+
+# Position the windows in certain regions of the output.
+[grid]
+slot_l = <super> KEY_LEFT 
+slot_r = <super> KEY_RIGHT
+slot_c = <super> KEY_UP
+restore = <super> KEY_DOWN
+
+# Simple active window switcher.
+[fast-switcher]
+activate = <super> KEY_SPACE
+inactive_alpha = 0.0001
+
+# Workspaces
+
+# Switch to workspace.
+[vswitch]
+binding_win_left = <super> <ctrl> <shift> KEY_LEFT
+binding_win_right = <super> <ctrl> <shift> KEY_RIGHT
+
+# Show the current workspace row as a cube.
+[cube]
+#background_mode = cubemap
+#cubemap_image = /home/safe/dome.jpeg
+activate = <ctrl> <alt> BTN_LEFT
+# Switch to the next or previous workspace.
+rotate_left = <super> <ctrl> KEY_LEFT
+rotate_right = <super> <ctrl> KEY_RIGHT
+
+# Rules 
+
+# Example configuration:
+#
+# [window-rules]
+# alacritty = app-id Alacritty created -> set maximized
+#
+# You can get the properties of your applications with the following command:
+# $ WAYLAND_DEBUG=1 alacritty 2>&1 | kak
+#
+# See Window rules for a complete reference.
+# https://github.com/WayfireWM/wayfire/wiki/Configuration#window-rules

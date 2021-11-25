@@ -1,0 +1,22 @@
+alias pk='doas pacman'
+
+alias pks='pk -Qs'
+alias pkm='pk -Qm'
+alias pkn='pk -Qn'
+alias pki='pk -S'
+alias pkr='pk -R'
+alias pko='pk -Qtdq | pk -Rns -'
+alias pku='pk -Syu'
+
+alias pkc='makepkg -si'
+
+pka() {
+	ch pkgs
+	gc https://aur.archlinux.org/${1}.git
+}
+
+pkau() {
+	ch pkgs
+	c $1
+	g pull
+}

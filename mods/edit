@@ -1,0 +1,25 @@
+alias e='nvim'
+alias erc='e ~/.bashrc'
+
+function ee() {
+	for match in $1*; do
+		[ -f $match ] && e $match
+		break
+	done;
+}
+
+function em() {
+	[ $# -ne 1 ] && cd ~/mods && return
+	for match in ~/mods/$1*; do
+		[ -f $match ] && e $match && source $match
+		break
+	done;
+}
+
+function ec() {
+	[ $# -ne 1 ] && cd ~/.config && return
+	for match in ~/.config/${1}*; do
+		e $match
+		break
+	done;
+}
