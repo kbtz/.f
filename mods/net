@@ -1,0 +1,16 @@
+wp() {
+	ping 8.8.8.8 -c1 -W2 || wr
+	sleep 30
+	clear
+	wp
+}
+
+wr() {
+	clear
+	echo "reconnecting..."
+	iwctl station wlan0 disconnect
+	sleep 2
+	iwctl station wlan0 connect $WLAN
+}
+
+alias ws='iwctl station wlan0 show'

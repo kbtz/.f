@@ -8,17 +8,18 @@ nnoremap <leader><leader>t :tabe
 nnoremap <leader>t :tabn<CR>
 nnoremap <leader>T :tabp<CR>
 
-nnoremap <leader>n :bn<CR>
-nnoremap <leader>N :bp<CR>
+nnoremap <leader>n :tabe 
 
-nnoremap <leader>X :Lexplore<CR>
-nnoremap <leader>x :Rexplore<CR>
+nnoremap <leader>c :%s///g<left><left><left>
 
 " dirty new lines to keep indentation
 nnoremap o ox<BS><ESC>
 nnoremap O Ox<BS><ESC>
 
-nnoremap <ESC> :noh<CR>
+nnoremap <silent> <ESC> :noh<CR>
+
+nnoremap > >>
+nnoremap < <<
 
 " moving
 nnoremap k :echo "TAB"<CR>
@@ -32,7 +33,7 @@ nnoremap <A-CR> :m+<CR>==
 nnoremap l :echo "SPACE"<CR>
 nnoremap h :echo "BACKSPACE"<CR>
 
-" sneak  sssss  sssss
+" snek  sssss  sssss
 map f <Plug>Sneak_f
 map F <Plug>Sneak_F
 map , <Plug>Sneak_;
@@ -40,3 +41,9 @@ map ; <Plug>Sneak_,
 
 inoremap <C-CR> <C-X><C-N>
 inoremap <S-TAB> <C-X><C-F>
+inoremap '' ''<left>
+inoremap ' '
+inoremap (( ()<left>
+inoremap ( (
+inoremap [[ []<left>
+inoremap [ [

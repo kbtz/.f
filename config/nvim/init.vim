@@ -5,6 +5,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 	Plug '/home/code/vjs'
 	Plug '/home/code/vc'
 	Plug 'justinmk/vim-sneak'
+	Plug 'tikhomirov/vim-glsl'
 	Plug 'wakatime/vim-wakatime'
 call plug#end()
 

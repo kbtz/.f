@@ -41,15 +41,15 @@ opacity = 0.5
 blur_by_default = app_id contains "kitty"
 
 [wallpaper:first]
-path = /home/safe/warpx.glsl
+path = /home/safe/wall/warpx.glsl
 workspaces = 0
 
 [wallpaper:second]
-path = /home/safe/grid.jpeg
+path = /home/safe/wall/scape.jpeg
 workspaces = 1
 
 [wallpaper:third]
-path = /home/safe/liquid.jpeg
+path = /home/safe/wall/liquid.jpeg
 workspaces = 2
 
 # Mouse bindings 

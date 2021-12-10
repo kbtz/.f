@@ -1,6 +1,6 @@
 set nocompatible
 set showmatch
-set showtabline=0
+set showtabline=1
 set conceallevel=2
 set hidden
 set ignorecase

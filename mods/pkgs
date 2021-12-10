@@ -12,7 +12,9 @@ alias pkc='makepkg -si'
 
 pka() {
 	ch pkgs
-	gc https://aur.archlinux.org/${1}.git
+	gcl https://aur.archlinux.org/${1}.git
+	cd $1
+	makepkg -si
 }
 
 pkau() {

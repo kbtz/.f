@@ -14,7 +14,7 @@ hi Keyword ctermfg=11
 hi String ctermfg=13
 hi Number ctermfg=5
 
-hi TabLine ctermbg=none
+hi TabLine ctermfg=8 ctermbg=none cterm=none
 hi TabLineSel ctermbg=none
-hi TabLineFill ctermbg=none ctermfg=red
+hi TabLineFill ctermbg=none ctermfg=0
 

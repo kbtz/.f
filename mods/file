@@ -1,11 +1,12 @@
-alias l="ls -lh"
-alias la="l -a"
-alias lt="tree -d -L 2 -a"
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
+alias ls='/bin/ls --group-directories-first --color=auto --sort=extension'
+alias l='ls -lh'
+alias la='l -a'
+alias lt='tree -d -L 2 -a'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 
-alias rmr="rm -rf"
+alias rmr='rm -rf'
 
 c() {
 	for match in $1*; do

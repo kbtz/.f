@@ -1,9 +1,8 @@
+cd /home
 if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-	cd /home
 	wayfire &> /tmp/wflog
 fi
 
 for src in ~/mods/*; do
     source $src
 done
-cd /home
