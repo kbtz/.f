@@ -4,5 +4,12 @@ export PATH="/usr/bin:/home/dots/.local/bin"
 export LC_COLLATE="C"
 export LANG="en_US.UTF-8"
 
-export PS1="==< \W> "
 export HISTCONTROL=ignoreboth
+
+export PS1="==< \W> "
+export PROMPT_COMMAND="_execHooks"
+
+_execHooks() {
+	source $_DOT/tmp/hooks
+	>$_DOT/tmp/hooks
+}

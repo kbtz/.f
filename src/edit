@@ -8,15 +8,16 @@ ee() {
 	er `first $1`
 }
 
-ecd() {
-	[ $# -eq 2 ] || { cd $1; cr;	return 0; }
+eff() {
+	[ $# -eq 1 ] && { cd $1; cr; return 0; }
 	
 	ff $1 $2				\
 		&& er $match	\
 		|| cd $1
+	
 	unset match
 }
 
-alias es='ecd $_DOT/src'
-alias ec='ecd $_DOT/cfg'
-alias eC='ecd ~/.config'
+alias es='eff $_DOT/src'
+alias ec='eff $_DOT/cfg'
+alias eC='eff ~/.config'
