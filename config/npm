@@ -1,1 +1,5 @@
 prefix=/home/dots/.local
+init-author-email=contact@kbtz.dev
+init-author-name=kbtz
+init-license=Unlicense
+init-version=0.1.0

@@ -1,6 +1,12 @@
-alias su='doas '
-alias brb='su reboot'
-alias bye='su poweroff'
+alias rot13="tr 'A-Za-z' 'N-ZA-Mn-za-m'"
 
-alias ?="type"
 alias wfl="tail -f /tmp/wflog"
+
+alias ytd='youtube-dl'
+alias ytdm='ytd -x --audio-format mp3'
+
+ytdmp() {
+	ytd --get-id $1 \
+  | xargs -I '{}' -P 5 youtube-dl -x --audio-format mp3 '{}'
+}
+

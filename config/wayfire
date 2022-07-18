@@ -1,7 +1,4 @@
 [core]
-# decoration \
-# oswitch \
-# expo \
 plugins = \
   alpha \
   blur \
@@ -19,11 +16,17 @@ plugins = \
   vswitch \
   wallpaper \
   window-rules \
+	wm-actions \
   wobbly \
   zoom
 
 # Close focused window.
 close_top_view = <super> KEY_C
+
+[wm-actions]
+toggle_fullscreen = <super> KEY_F
+toggle_always_on_top = <super> KEY_T
+toggle_sticky = <super> KEY_S
 
 # Workspaces arranged into a grid
 vwidth = 3
@@ -33,19 +36,18 @@ vheight = 1
 [invert]
 toggle = <super> KEY_I
 
-[keycolor]
-threshold = 0.1
-opacity = 0.5
-
 [blur]
 blur_by_default = app_id contains "kitty"
+kawase_degrade = 2
+kawase_iterations = 2
+kawase_offset = 3
 
-[wallpaper:first]
-path = /home/safe/wall/warpx.glsl
+[wallpaper:a]
+path = /home/safe/wall/roll.jpeg
 workspaces = 0
 
 [wallpaper:second]
-path = /home/safe/wall/scape.jpeg
+path = /home/safe/wall/hex.jpg
 workspaces = 1
 
 [wallpaper:third]
@@ -122,8 +124,8 @@ inactive_alpha = 0.0001
 
 # Switch to workspace.
 [vswitch]
-binding_win_left = <super> <ctrl> <shift> KEY_LEFT
-binding_win_right = <super> <ctrl> <shift> KEY_RIGHT
+with_win_left = <super> <ctrl> <shift> KEY_LEFT
+with_win_right = <super> <ctrl> <shift> KEY_RIGHT
 
 # Show the current workspace row as a cube.
 [cube]

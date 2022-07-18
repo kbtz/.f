@@ -4,7 +4,9 @@ alias gl='g log -4'
 alias gd='g diff'
 alias gcl='g clone'
 alias ga='g add .'
+alias gb='g branch'
 alias gu='g push'
+alias gU='g pull'
 
 gc() {
 	g commit -m "$*"
@@ -12,4 +14,9 @@ gc() {
 
 ghcl() {
 	gcl github:${1}.git ${@:2}
+}
+
+gkcl() {
+	cc
+	gcl https://github.com/kbtz/${1}.git ${2:-$1}
 }

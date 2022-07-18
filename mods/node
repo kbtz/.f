@@ -1,7 +1,41 @@
-alias n="npm"
-alias ni="n install"
-alias ns="n run start"
-alias nd="n run dev"
+alias n='npm'
+alias nI='n init'
+alias ni='n install'
+alias nig='n install --global'
+alias nid='n install -D'
+alias nr='n remove'
+alias ns='n run start'
+alias nd='n run dev'
+alias nb='n run build'
+alias nbd='n run build-data'
+alias nl='n link'
 
-alias hs="http-server -p80 -s"
-alias hsl="live-server --port=80 --host=kdev --no-browser"
+alias hs='http-server -p80 -s'
+alias hsl='live-server --port=80 --host=kdev --no-browser --no-css-inject'
+
+nit() { n install -D @types/$1; }
+niwt() { ni $1 && nit $1; }
+
+nrt() { n remove @types/$1; }
+nrwt() { nr $1 && nrt $1; }
+
+nlk() {
+	nl @kbtz/$1
+}
+
+nIk() {
+	read -e -i $(basename `pwd`) -p 'Name: ' name
+	read -e -p 'Description: ' desc
+	cat <<- JSON > package.json
+	{
+		"name": "@kbtz/$name",
+		"version": "0.1.0",
+		"description": "$desc",
+		"main": "index.ts",
+		"scripts": {},
+		"author": "kbtz <contact@kbtz.dev>",
+		"license": "Unlicense"
+	}
+	JSON
+}
+	

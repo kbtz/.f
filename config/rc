@@ -6,3 +6,5 @@ fi
 for src in ~/mods/*; do
     source $src
 done
+
+cc

@@ -6,7 +6,17 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
+alias dud='du -hd1'
 alias rmr='rm -rf'
+alias rms='shred -u'
+
+rmsr() {
+	find . -type f
+	read
+	find . -type f -exec shred -u {} \;
+}
+
+alias uz='unzip'
 
 c() {
 	for match in $1*; do

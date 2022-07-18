@@ -1,0 +1,6 @@
+alias ?="type"
+
+alias W='watch '
+function Wf() {
+    watch -x bash -i -c "$@"
+}
