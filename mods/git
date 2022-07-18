@@ -1,0 +1,39 @@
+alias g='git'
+alias gs='g status'
+alias gl='g log -2'
+alias gd='g diff'
+alias gcl='g clone'
+alias ga='g add .'
+alias gb='g branch'
+alias gU='g pull'
+
+gc() {
+	g commit -m "$*"
+}
+
+ghcl() {
+	#gcl github:${1}.git ${@:2}
+	gcl https://github.com/${2:-$1}/${1}.git ${@:3}
+}
+
+gkcl() {
+	cc
+	gcl https://kbtz@github.com/kbtz/${1}.git ${2:-$1}
+}
+
+gbr() {
+	gb -m ${1:-trunk} ${2:-pub}
+	g fetch origin
+	gb -u origin/pub pub
+	g remote set-head origin -a
+}
+
+glock() {
+	otp $1 ~/.git-credentials
+}
+
+gu() {
+	glock d
+	g push 
+	glock e
+}

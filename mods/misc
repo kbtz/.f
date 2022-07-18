@@ -1,4 +1,5 @@
 alias rot13="tr 'A-Za-z' 'N-ZA-Mn-za-m'"
+alias rot31="tr 'N-ZA-Mn-za-m5-90-4' 'A-Za-z0-9'"
 
 alias wfl="tail -f /tmp/wflog"
 
