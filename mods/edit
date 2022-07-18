@@ -1,8 +1,10 @@
 alias e='nvim'
 alias erc='e ~/.bashrc'
 
-local src=$(realpath ${BASH_SOURCE})
-_DOT=${src%/*/*}
+_SRC=$(realpath ${BASH_SOURCE})
+_DOT=${_SRC%/*/*}
+unset _SRC
+
 function ee() {
 	for match in $1*; do
 		[ -f $match ] && e $match
@@ -18,12 +20,11 @@ function em() {
 	done;
 }
 
-alias ec='_ec ~/.config '
-alias eC='_ec  ${_DOT}/config '
+alias ec='_ec  ${_DOT}/config '
+alias eC='_ec ~/.config '
 function _ec() {
 	local base=$1
 	shift
-	
 	[ $# -eq 0 ] && cd $base && return
 	for match in ${base}/${1}*; do
 		e $match

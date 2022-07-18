@@ -3,14 +3,17 @@ alias gs='g status'
 alias gl='g log -2'
 alias gd='g diff'
 alias gD='g diff --staged'
+alias gcb='gc bump; gu'
 alias gcl='g clone'
 alias ga='g add .'
 alias gb='g branch'
 alias gU='g pull'
+alias gr='g restore'
 
 gc() {
 	g commit -m "$*"
 }
+
 
 ghcl() {
 	#gcl github:${1}.git ${@:2}
