@@ -38,3 +38,13 @@ cc() {
 cr() {
 	cd $(realpath `pwd`)
 }
+
+ff() {
+	for match in $1/${2/\//*/}* $1/*${2/\//*/}; do
+		[ -f $match ] || continue
+		export match
+		return 0
+		break
+	done
+	return 1
+}

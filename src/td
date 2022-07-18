@@ -1,0 +1,10 @@
+_TDD=/home/safe/todos
+_TDC=''
+
+tds() {
+	:;
+}
+
+alias tdl='cat -n $_TDC'
+alias tdll='ls $_TDD'
+
