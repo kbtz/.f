@@ -1,9 +1,4 @@
 alias e='nvim'
-alias erc='e ~/.bashrc'
-
-_SRC=$(realpath ${BASH_SOURCE})
-_DOT=${_SRC%/*/*}
-unset _SRC
 
 er() {
 	e $(realpath $1)
@@ -17,14 +12,14 @@ ee() {
 }
 
 em() {
-	[ $# -ne 1 ] && cd ${_DOT}/mods && return
-	for match in ${_DOT}/mods/$1*; do
+	[ $# -ne 1 ] && cd ${_DOT}/src && return
+	for match in ${_DOT}/src/$1*; do
 		[ -f $match ] && er $match && source $match
 		break
 	done;
 }
 
-alias ec='_ec  ${_DOT}/config'
+alias ec='_ec  ${_DOT}/cfg'
 alias eC='_ec ~/.config'
 _ec() {
 	local base=$1

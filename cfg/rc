@@ -1,0 +1,15 @@
+cd /home
+if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+	wayfire &> /tmp/wflog
+fi
+
+_SRC=$(realpath ${BASH_SOURCE})
+_DOT=${_SRC%/*/*}
+unset _SRC
+export _DOT
+
+for file in $_DOT/src/*; do
+	source $file
+done; unset file
+
+cc

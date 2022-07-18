@@ -9,8 +9,10 @@ call plug#end()
 
 if exists('g:vscode')
 	runtime vsmappings.vim
-else
-	let g:python3_host_prog = "/usr/bin/python3"
-	runtime mappings.vim
+	finish
 endif
 
+let g:python3_host_prog = "/usr/bin/python3"
+
+runtime mappings.vim
+runtime dotfiles.vim

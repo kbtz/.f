@@ -17,6 +17,7 @@ rmsr() {
 }
 
 alias uz='unzip'
+alias c.='cd $_DOT'
 
 c() {
 	for match in $1*; do
