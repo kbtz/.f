@@ -5,29 +5,33 @@ _SRC=$(realpath ${BASH_SOURCE})
 _DOT=${_SRC%/*/*}
 unset _SRC
 
-function ee() {
+er() {
+	e $(realpath $1)
+}
+
+ee() {
 	for match in $1*; do
-		[ -f $match ] && e $match
+		[ -f $match ] && er $match
 		break
 	done;
 }
 
-function em() {
+em() {
 	[ $# -ne 1 ] && cd ${_DOT}/mods && return
 	for match in ${_DOT}/mods/$1*; do
-		[ -f $match ] && e $match && source $match
+		[ -f $match ] && er $match && source $match
 		break
 	done;
 }
 
-alias ec='_ec  ${_DOT}/config '
-alias eC='_ec ~/.config '
-function _ec() {
+alias ec='_ec  ${_DOT}/config'
+alias eC='_ec ~/.config'
+_ec() {
 	local base=$1
 	shift
 	[ $# -eq 0 ] && cd $base && return
 	for match in ${base}/${1}*; do
-		e $match
+		er $match
 		break
 	done;
 }

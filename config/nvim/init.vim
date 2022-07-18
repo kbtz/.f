@@ -2,11 +2,15 @@ runtime options.vim
 
 call plug#begin('~/.local/share/nvim/site/plugged')
 	Plug 'justinmk/vim-sneak'
-	Plug 'wakatime/vim-wakatime'
+	if !exists('g:vscode')
+		Plug 'wakatime/vim-wakatime'
+	endif
 call plug#end()
 
 if exists('g:vscode')
-		runtime vsmappings.vim
+	runtime vsmappings.vim
 else
-		runtime mappings.vim
+	let g:python3_host_prog = "/usr/bin/python3"
+	runtime mappings.vim
 endif
+
