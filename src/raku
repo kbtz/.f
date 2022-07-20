@@ -1,0 +1,5 @@
+alias r='raku'
+
+alias z='zef'
+alias zi='z install'
+alias zinf='z info'

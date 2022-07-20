@@ -3,6 +3,10 @@
 func dump(a) { for(i in a) print a[i] }
 func merge(a, s) { for(i in a) printf s a[i] }
 
+BEGIN {
+	ec="echo"
+}
+
 /^#/ { next }
 
 /^alias .*['"]$/ {
@@ -11,9 +15,7 @@ func merge(a, s) { for(i in a) printf s a[i] }
 	next
 }
 
-{
-	S[SC++]=$0
-}
+{ S[SC++]=$0 }
 
 END {
 	printf "alias"

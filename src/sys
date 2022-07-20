@@ -1,25 +1,12 @@
 alias R='doas '
 alias doas='doas '
 
-alias brb='R reboot'
-alias bye='R poweroff'
 
 alias mem='free -h'
 alias top='htop'
 
 utc() {
 	date +%s -d "$*"
-}
-
-cya() {
-	time=$(utc "tomorrow $1:$2") 
-	R rtcwake -u -m no -t $time
-	sleep 5
-	loginctl suspend
-}
-
-gn() {
-	cya 04 00
 }
 
 pss() {

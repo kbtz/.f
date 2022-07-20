@@ -11,13 +11,13 @@ ee() {
 eff() {
 	[ $# -eq 1 ] && { cd $1; cr; return 0; }
 	
-	ff $1 $2				\
+	ff f $2 $1			\
 		&& er $match	\
 		|| cd $1
 	
 	unset match
 }
 
-alias es='eff $_DOT/src'
-alias ec='eff $_DOT/cfg'
+alias es='eff ~f/src'
+alias ec='eff ~f/cfg'
 alias eC='eff ~/.config'

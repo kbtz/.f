@@ -1,0 +1,11 @@
+alias brb='R reboot'
+alias bye='R poweroff'
+alias gn='cya "tomorrow 04:00"'
+alias nap='cya "15:30"'
+
+cya() {
+	time=$(utc $1) 
+	R rtcwake -u -m no -t $time
+	sleep 5
+	loginctl suspend
+}

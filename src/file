@@ -8,7 +8,7 @@ alias ...='cd ../..'
 
 alias dud='du -hd1'
 alias rmr='rm -rf'
-alias c.='cd $_DOT'
+alias c.='cd ~f'
 
 c() {
 	for match in $1*; do
