@@ -1,5 +1,5 @@
 alias e='nvim'
-
+	
 er() {
 	e $(realpath $1)
 }

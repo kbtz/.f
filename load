@@ -1,0 +1,5 @@
+#!/bin/env -S echo -e Usage: source .f\n -- 
+
+~f/read ~f/src/* > ~f/last
+
+source ~f/last

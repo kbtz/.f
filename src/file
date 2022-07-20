@@ -1,22 +1,13 @@
-alias ls='/bin/ls --group-directories-first --color=auto --sort=extension'
+
 alias l='ls -lh'
-alias la='l -a'
+alias ls='/bin/ls -aA \
+ --group-directories-first --color=auto --sort=extension'
 alias lt='tree -d -L 2 -a'
 alias ..='cd ..'
 alias ...='cd ../..'
-alias ....='cd ../../..'
 
 alias dud='du -hd1'
 alias rmr='rm -rf'
-alias rms='shred -u'
-
-rmsr() {
-	find . -type f
-	read
-	find . -type f -exec shred -u {} \;
-}
-
-alias uz='unzip'
 alias c.='cd $_DOT'
 
 c() {
@@ -39,12 +30,17 @@ cr() {
 	cd $(realpath `pwd`)
 }
 
+alias ffm='echo $match'
 ff() {
-	for match in $1/${2/\//*/}* $1/*${2/\//*/}; do
-		[ -f $match ] || continue
-		export match
+	[ $# -lt 2 ] && return 1
+	local type=$1 search="${2/\//*/}*" base=${3:-.}
+	base=${base%*/} 
+	for match in \
+	 $base/$search $base/*$search \
+	 $base/.$search $base/.*$search; do
+		[ -$type $match ] || continue
 		return 0
-		break
-	done
-	return 1
+	done;
+	
+	unset match && return 1
 }

@@ -51,4 +51,4 @@ inoremap ' '
 inoremap (( ()<left>
 inoremap ( (
 inoremap [[ []<left>
-inoremap [ [
+inoremap <leader>[ ${]}<left><left>

@@ -1,0 +1,11 @@
+(
+	f=`realpath ${BASH_SOURCE%/*}`
+	id f || \
+	 sudo useradd -M -N -s/bin/false f
+	[ ~f == $f ] || \
+	 sudo usermod -d $f f
+) 2> /dev/null
+
+ln  -fs ~f/load ~/.local/bin/.f
+
+# TODO file links

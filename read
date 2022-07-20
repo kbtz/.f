@@ -1,0 +1,25 @@
+#!/bin/gawk -f
+
+func dump(a) { for(i in a) print a[i] }
+func merge(a, s) { for(i in a) printf s a[i] }
+
+/^#/ { next }
+
+/^alias .*['"]$/ {
+	sub("^alias ", "")
+	A[AC++]=$0
+	next
+}
+
+{
+	S[SC++]=$0
+}
+
+END {
+	printf "alias"
+		asort(A)
+		merge(A, " \\\n\t")
+	
+	printf "\n\n"
+	dump(S)
+}
