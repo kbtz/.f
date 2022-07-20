@@ -1,4 +1,4 @@
-prefix=/home/dots/.local
+prefix=~/.local
 init-author-email=contact@kbtz.dev
 init-author-name=kbtz
 init-license=Unlicense
