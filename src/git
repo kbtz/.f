@@ -16,8 +16,7 @@ gc() {
 }
 
 ghcl() {
-	#gcl github:${1}.git ${@:2}
-	gcl https://github.com/${2:-$1}/${1}.git ${@:3}
+	gcl https://github.com/${1}.git ${@:2}
 }
 
 gkcl() {
@@ -38,6 +37,6 @@ glock() {
 
 gu() {
 	glock d
-	g push 
+	g push $@
 	glock e
 }

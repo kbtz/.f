@@ -1,7 +1,6 @@
-
 alias l='ls -lh'
 alias ls='/bin/ls -aA \
- --group-directories-first --color=auto --sort=extension'
+ --group-directories-first --sort=extension --color=auto'
 alias lt='tree -d -L 2 -a'
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -27,17 +26,15 @@ cc() {
 }
 
 cr() {
-	cd $(realpath `pwd`)
+	cd $(realpath $PWD)
 }
 
 alias ffm='echo $match'
 ff() {
 	[ $# -lt 2 ] && return 1
-	local type=$1 search="${2/\//*/}*" base=${3:-.}
+	local type=$1 search=${2/\//*/} base=${3:-.}
 	base=${base%*/} 
-	for match in \
-	 $base/$search $base/*$search \
-	 $base/.$search $base/.*$search; do
+	for match in $base/{,.}{$search*,*$search*}; do
 		[ -$type $match ] || continue
 		return 0
 	done;

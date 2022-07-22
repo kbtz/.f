@@ -15,17 +15,18 @@ plugins = \
 	vswitch \
 	wallpaper \
 	window-rules \
+	wf-info \
 	wm-actions \
 	wobbly \
 	zoom
 
 close_top_view = <super> KEY_C
+vwidth = 4
+vheight = 1 
 
 [wm-actions]
 toggle_fullscreen = <super> KEY_F
 toggle_sticky = <super> KEY_S
-vwidth = 3
-vheight = 1 
 
 [invert]
 toggle = <super> KEY_I
@@ -34,13 +35,17 @@ toggle = <super> KEY_I
 path = /home/safe/wall/roll.jpeg
 workspaces = 0
 
-[wallpaper:second]
-path = /home/safe/wall/hex.jpg
+[wallpaper:b]
+path = /home/safe/wall/hex.jpeg
 workspaces = 1
 
-[wallpaper:third]
-path = /home/safe/wall/liquid.jpeg
+[wallpaper:c]
+path = /home/safe/wall/dhe.jpeg
 workspaces = 2
+
+[wallpaper:d]
+path = /home/safe/wall/liquid.jpeg
+workspaces = 3
 
 [move]
 activate = <super> BTN_LEFT
@@ -72,10 +77,9 @@ with_win_left = <super> <shift> KEY_RIGHT
 with_win_right = <super> <shift> KEY_DOWN
 
 [cube]
-activate = <ctrl> <alt> BTN_LEFT
-# Don't ask
 rotate_right = <super> KEY_DOWN
 rotate_left = <super> KEY_RIGHT
+activate = <ctrl> <alt> BTN_LEFT
 
 [command]
 binding_terminal = <super> KEY_ENTER
@@ -84,11 +88,17 @@ command_terminal = kitty
 binding_launcher = <super> KEY_D
 command_launcher = dmenu_run
 
-binding_www = <super> KEY_6
-command_www = chromium
-
 binding_code = <super> KEY_5
 command_code = code
+
+binding_web = <super> KEY_6
+command_web = chromium
+
+binding_music = <super> KEY_8
+command_music = youtube-music
+
+binding_date = <super> KEY_0
+command_date = notify-send -t 3000 "$(date)"
 
 binding_screenshot = <super> <shift> KEY_P
 command_screenshot = slurp | grim -g - $(date '+%F_%T').jpeg
@@ -100,11 +110,7 @@ command_volume_down = amixer set Master 5%-
 binding_mute = KEY_MUTE
 command_mute = amixer set Master toggle
 
-# [window-rules]
-# alacritty = app-id Alacritty created -> set maximized
-
-# NOTE: You can get the properties of your applications with the following command:
-# $ WAYLAND_DEBUG=1 alacritty 2>&1 | kak
-#
-# See Window rules for a complete reference.
-# https://github.com/WayfireWM/wayfire/wiki/Configuration#window-rules
+[window-rules]
+alpha_code = on created if app_id is "Code" then set alpha 0.9
+alpha_ytm = on created if app_id is "YouTube Music" then set alpha 0.8
+alpha_blanket = on created if app_id is "com.rafaelmardojai.Blanket" then set alpha 0.8

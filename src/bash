@@ -1,6 +1,7 @@
-alias ?="type"
-alias ?x="set -x"
-alias ?X="set +x"
+alias ?='type'
+alias ?x='set -x'
+alias ?X='set +x'
+alias +x='chmod +x'
 
 alias W='watch '
 Wf() {
@@ -8,15 +9,17 @@ Wf() {
 }
 
 watcher() {
-	interval=$1
-	shift
+	[ $# -gt 1 ] || return 1
+	buffer=$(mktemp)
+	interval=$1; shift
+	cmd="$@"
+	
 	while true; do
-		clear
-		[ $# -gt 0 ] && \
-			cmd="$@"
+		{ time eval $cmd 2>&1; } > $buffer
 		
+		clear
 		echo \"$cmd\"
-		eval $cmd
+		cat $buffer
 		
 		[ $interval -gt 0 ] \
 			&& sleep $interval \
