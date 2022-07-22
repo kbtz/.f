@@ -21,7 +21,5 @@ watcher() {
 		[ $interval -gt 0 ] \
 			&& sleep $interval \
 			|| read
-		
-		_execHooks
 	done
 }
