@@ -1,20 +1,11 @@
-runtime options.vim
+ru env.vim
 
-call plug#begin('~/.local/share/nvim/site/plugged')
+PB
 	Plug 'justinmk/vim-sneak'
-	if !exists('g:vscode')
+	if !g:vs
 		Plug 'wakatime/vim-wakatime'
 		Plug 'Raku/vim-raku'
-	endif
-call plug#end()
+	en
+PE
 
-if exists('g:vscode')
-	runtime vsmappings.vim
-	finish
-endif
-
-let g:python3_host_prog = "/usr/bin/python3"
-
-runtime mappings.vim
-runtime dotfiles.vim
-
+R cfg kbd dot
