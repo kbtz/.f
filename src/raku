@@ -1,4 +1,5 @@
 alias r='raku'
+alias rr='raku; reset'
 
 alias z='zef'
 alias zi='z install'

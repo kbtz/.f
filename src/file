@@ -37,7 +37,7 @@ ff() {
 	for match in $base/{,.}{$search*,*$search*}; do
 		[ -$type $match ] || continue
 		return 0
-	done;
+	done
 	
 	unset match && return 1
 }

@@ -7,3 +7,5 @@ fi
 
 source .f
 cd ~f
+
+cc r

@@ -27,6 +27,7 @@ vheight = 1
 [wm-actions]
 toggle_fullscreen = <super> KEY_F
 toggle_sticky = <super> KEY_S
+toggle_always_on_top = <super> KEY_H
 
 [invert]
 toggle = <super> KEY_I
@@ -57,7 +58,7 @@ activate = <super> BTN_RIGHT
 modifier = <super>
 
 [alpha]
-modifier = <super> <alt>
+modifier = <super> <ctrl>
 
 [autostart]
 notifications = mako

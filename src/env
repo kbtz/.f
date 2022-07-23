@@ -5,4 +5,6 @@ export LANG="en_US.UTF-8"
 
 export HISTCONTROL=ignoreboth
 
+tabs 2
 export PS1="==< \W> "
+
