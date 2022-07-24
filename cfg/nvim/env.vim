@@ -35,7 +35,7 @@ fu! s:nrmap(mode, layer, key, cmd, vsa = 'same', vsns = 'workbench')
 	en
 	
 	if g:vs && a:vsa !~ '\v^(same|none)$'
-		EXE join([l:binding, 'VS', a:vsns, a:vsa])
+		EXE join([l:binding, ':VS', a:vsns, a:vsa, '<CR>'])
 	en
 endf
 
