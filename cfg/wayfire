@@ -21,8 +21,8 @@ plugins = \
 	zoom
 
 close_top_view = <super> KEY_C
-vwidth = 4
-vheight = 1 
+vwidth = 3
+vheight = 2 
 
 [wm-actions]
 toggle_fullscreen = <super> KEY_F
@@ -32,21 +32,30 @@ toggle_always_on_top = <super> KEY_H
 [invert]
 toggle = <super> KEY_I
 
-[wallpaper:a]
-path = /home/safe/wall/roll.jpeg
+[wallpaper:A]
+path = /home/safe/wall/sisyphus-up.jpeg
 workspaces = 0
 
-[wallpaper:b]
-path = /home/safe/wall/hex.jpeg
+[wallpaper:B]
+path = /home/safe/wall/sadko-up.jpeg
 workspaces = 1
 
-[wallpaper:c]
-path = /home/safe/wall/dhe.jpeg
+[wallpaper:C]
+path = /home/safe/wall/diogenes-up.jpeg
 workspaces = 2
 
-[wallpaper:d]
-path = /home/safe/wall/liquid.jpeg
+[wallpaper:a]
+path = /home/safe/wall/sisyphus-down.jpeg
 workspaces = 3
+
+[wallpaper:b]
+path = /home/safe/wall/sadko-down.jpeg
+workspaces = 4
+
+[wallpaper:c]
+path = /home/safe/wall/diogenes-down.jpeg
+workspaces = 5
+
 
 [move]
 activate = <super> BTN_LEFT
@@ -68,19 +77,26 @@ animation_duration = 0
 inner_gap_size = 8
 outer_horiz_gap_size = 128
 outer_vert_gap_size = 16
+key_toggle = <super> KEY_T
 
 [fast-switcher]
-activate = <super> KEY_SPACE
-inactive_alpha = 0.0001
+activate = <super> KEY_N
+inactive_alpha = 0.3
 
 [vswitch]
-with_win_left = <super> <shift> KEY_RIGHT
-with_win_right = <super> <shift> KEY_DOWN
+duration = 150
+binding_up = <super> KEY_L
+binding_down = <super> KEY_E
+with_win_up = <super> <shift> KEY_L
+with_win_down = <super> <shift> KEY_E
+with_win_left = <super> <shift> KEY_O
+with_win_right = <super> <shift> KEY_U
 
 [cube]
-rotate_right = <super> KEY_DOWN
-rotate_left = <super> KEY_RIGHT
+rotate_left = <super> KEY_O
+rotate_right = <super> KEY_U
 activate = <ctrl> <alt> BTN_LEFT
+initial_animation = 150
 
 [command]
 binding_terminal = <super> KEY_ENTER
@@ -89,11 +105,11 @@ command_terminal = kitty
 binding_launcher = <super> KEY_D
 command_launcher = dmenu_run
 
-binding_code = <super> KEY_5
-command_code = code
-
 binding_web = <super> KEY_6
 command_web = chromium
+
+binding_code = <super> KEY_7
+command_code = code
 
 binding_music = <super> KEY_8
 command_music = youtube-music
@@ -113,5 +129,5 @@ command_mute = amixer set Master toggle
 
 [window-rules]
 alpha_code = on created if app_id is "Code" then set alpha 0.9
-alpha_ytm = on created if app_id is "YouTube Music" then set alpha 0.8
+alpha_ytm = on created if app_id is "YouTube Music" then set alpha 0.9
 alpha_blanket = on created if app_id is "com.rafaelmardojai.Blanket" then set alpha 0.8

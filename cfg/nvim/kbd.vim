@@ -59,8 +59,8 @@ MR	<A-CR> :m+<CR>==
 "" snek  sssss  sssss
 MR	f <Plug>Sneak_f
 MR	F <Plug>Sneak_F
-MR	; <Plug>Sneak_;
-MR	, <Plug>Sneak_,
+MR	, <Plug>Sneak_;
+MR	; <Plug>Sneak_,
 
 "" wat ?
 "nnoremap <C-P> a<C-R>0
