@@ -1,0 +1,27 @@
+#!/bin/env -S gawk -i inplace -f 
+
+BEGIN {
+	section = ARGV[2]
+	key = "^" ARGV[3] "\\s*=\\s*([^ \\t]+)\\s*$"
+	vA = ARGV[4]
+	vB = ARGV[5]
+	ARGC = 2
+	inside = 0
+}
+
+$0 ~ "^\\[" section "\\]$" {
+	inside=1
+}
+
+$0 ~ "^\\[" && $0 !~ "^\\[" section "\\]$" {
+	inside = 0	
+}
+
+inside && match($0, key, m) {
+	if (m[1] == vA) sub(vA, vB)
+	else sub(m[1], vA)
+}
+
+{
+	print
+}

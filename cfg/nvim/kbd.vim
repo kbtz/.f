@@ -18,7 +18,7 @@ NL	T :tabp<CR> previousEditorInGroup
 NL	<ESC> :q!<CR> closeActiveEditor
 
 NL	s :w<CR> files.save
-NL	S :wq<CR> none
+NL	= :wq<CR> none
 
 NL	c :%s///g<left><left><left> startFindReplaceAction editor
 NL	y none rename editor

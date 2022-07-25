@@ -1,1 +1,9 @@
-declare -g -A X=([x]=12)
+TD=/home/safe/todos
+
+tdl() {
+	cat $TD/today
+}
+
+tde() {
+	e $TD/today
+}

@@ -3,10 +3,6 @@
 func dump(a) { for(i in a) print a[i] }
 func merge(a, s) { for(i in a) printf s a[i] }
 
-BEGIN {
-	ec="echo"
-}
-
 /^#/ { next }
 
 /^alias .*['"]$/ {

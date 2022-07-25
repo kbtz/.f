@@ -1,7 +1,7 @@
 alias R='doas '
 alias doas='doas '
 
-
+alias ka='killall -9 '
 alias mem='free -h'
 alias top='htop'
 
