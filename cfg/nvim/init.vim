@@ -8,4 +8,4 @@ PB
 	en
 PE
 
-R cfg kbd dot
+R cfg kbd ext
