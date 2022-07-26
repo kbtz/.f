@@ -1,6 +1,6 @@
 #!/bin/env -S echo -e Usage: source .f\n -- 
 
-~f/bin/read ~f/src/* > ~f/last
+~f/bin/read ~f/src/* > ~f/run/last
 
 declare -g -A F
-source ~f/last
+source ~f/run/last
