@@ -1,23 +1,18 @@
 alias e='nvim'
-	
-er() {
-	e $(realpath $1)
-}
-
-ee() {
-	er `first $1`
-}
 
 eff() {
 	[ $# -eq 1 ] && { cd $1; cr; return 0; }
 	
-	ff f $2 $1			\
-		&& er $match	\
+	ff f $2 $1		\
+		&& e $match	\
 		|| cd $1
-	
-	unset match
 }
 
-alias es='eff ~f/src'
 alias ec='eff ~f/cfg'
 alias eC='eff ~/.config'
+
+es() {
+	eff ~f/src $1
+	[ ! -z $match ] && \
+		source $match  
+}
