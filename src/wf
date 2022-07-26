@@ -1,1 +1,5 @@
 alias wfi='wf-info'
+
+function wf() {
+	wayfire > ~f/run/wf-log
+}

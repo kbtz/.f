@@ -1,10 +1,8 @@
-export EDITOR="nvim"
-
-export LC_COLLATE="C"
-export LANG="en_US.UTF-8"
-
-export HISTCONTROL=ignoreboth
+export \
+	EDITOR=nvim \
+	HISTCONTROL=ignoreboth \
+	LANG=en_US.UTF-8 \
+	LC_COLLATE=C \
+	PS1="==< \W> "
 
 tabs 2
-export PS1="==< \W> "
-

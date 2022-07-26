@@ -3,6 +3,8 @@ alias ?x='set -x'
 alias ?X='set +x'
 alias +x='chmod +x'
 
+alias readln='IFS= read'
+
 alias W='watch '
 Wf() {
     watch -x bash -i -c "$@"

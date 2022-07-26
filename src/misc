@@ -3,9 +3,11 @@ alias rot31="tr 'N-ZA-Mn-za-m5-90-4' 'A-Za-z0-9'"
 
 alias wfl="tail -f /tmp/wflog"
 
+alias gn='cya "tomorrow 04:00"'
+alias nap='cya "14:30"'
+
 alias ytd='youtube-dl'
 alias ytdm='ytd -x --audio-format mp3'
-
 ytdmp() {
 	ytd --get-id $1 | \
 		xargs -I '{}' -P 5 youtube-dl -x --audio-format mp3 '{}'
@@ -13,4 +15,9 @@ ytdmp() {
 
 hex() {
 	printf '%x' "'$1'"
+}
+
+mus() {
+	ff d $1 /home/safe/music
+	mpv `ffm`
 }
