@@ -1,15 +1,32 @@
 alias R='doas '
-alias doas='doas '
-
-alias ka='killall -9 '
 alias mem='free -h'
 alias top='htop'
+alias mix='pulsemixer'
+alias kaf='R killall -9 '
+alias brb='R reboot'
+alias bye='R poweroff'
+
+pss() {
+	ps aux | grep $1
+}
+
+cya() {
+	time=$(utc $*) 
+	R rtcwake -u -m no -t $time
+	sleep 5
+	loginctl suspend
+}
 
 utc() {
 	date +%s -d "$*"
 }
 
-pss() {
-	ps aux | grep $1;
+spool() {
+	sp=~f/run/spool
+	touch $sp
+	while :; do
+		fw $sp
+		source $sp
+		>$sp
+	done
 }
-

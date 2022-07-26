@@ -36,8 +36,15 @@ ff() {
 	base=${base%*/} 
 	for match in $base/{,.}{$search*,*$search*}; do
 		[ -$type $match ] || continue
+		match=`realpath $match`
 		return 0
 	done
 	
 	unset match && return 1
+}
+
+fw() {
+	evm=('s/'{C/create,U/modify,M/move,D/delete}',/;' 's/,$//')
+	evs=$(sed -e "${evm[*]}" <<<${2:-U})
+	inotifywait -q -e $evs $1 ${@:3}
 }
