@@ -1,12 +1,13 @@
 #!/bin/env -S gawk -i inplace -f 
+#!/bin/env -S gawk -f 
 
 BEGIN {
 	section = ARGV[2]
 	key = "^" ARGV[3] "\\s*=\\s*([^ \\t]+)\\s*$"
 	vA = ARGV[4]
-	vB = ARGV[5]
+	vB = ARGC < 6 ? ARGV[4] : ARGV[5]
+	
 	ARGC = 2
-	inside = 0
 }
 
 $0 ~ "^\\[" section "\\]$" {

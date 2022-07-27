@@ -42,7 +42,8 @@ MR	<TAB> <Up>
 MR	<CR> <Down>
 MR	<TAB> <Up>
 MR	<CR> <Down>
-MR	m G
+MR	<Home> gg
+MR	<End> G
 
 "" line move
 NR	<S-TAB> <C-Y>

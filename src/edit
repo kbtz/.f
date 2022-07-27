@@ -9,6 +9,8 @@ eff() {
 }
 
 alias ec='eff ~f/cfg'
+alias eb='eff ~f/bin'
+alias er='eff ~f/run'
 alias eC='eff ~/.config'
 
 es() {

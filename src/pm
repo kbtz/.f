@@ -1,0 +1,35 @@
+export \
+	PMI=~f/run/pomo \
+	PMD=90 PMB=20
+
+alias \
+	pmw='wft wallpaper:break workspaces' \
+	pmw1='pmw 0,1,2,3,4,5' \
+	pmw0='pmw 9'
+
+pms() {
+	pmc
+	after $PMD pmb
+	after $[ PMD - 5 ] \
+		wfn 'break in 5'
+	pmi 2
+}
+
+pmb() {
+	pmc
+	pmw1
+	after $PMB pmb
+	pmi
+}
+
+pmi() {
+	at -l | tail -n${1:-1} | cut -f1 >> $PMI
+}
+
+pmc() {
+	pmw0
+	while readln id; do
+		at -d $id 2>/dev/null
+	done < <(cat $PMI)
+	>$PMI
+}

@@ -17,6 +17,15 @@ cya() {
 	loginctl suspend
 }
 
+after() {
+	m=$1; shift
+	at "now + $m minutes" <<-SH 2>/dev/null
+		echo '
+		$*
+		' > $(realpath ~f/run/spool)
+	SH
+}
+
 utc() {
 	date +%s -d "$*"
 }
