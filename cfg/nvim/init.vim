@@ -8,4 +8,4 @@ PB
 	en
 PE
 
-R cfg kbd ext
+R cfg kbd ext auc

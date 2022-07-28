@@ -15,6 +15,11 @@ c() {
 	done
 }
 
+cs() {
+	[ $# -ne 1 ] && cd /home/safe && return
+	c "/home/safe/$1"
+}
+
 ch() {
 	[ $# -ne 1 ] && cd /home && return
 	c "/home/$1"

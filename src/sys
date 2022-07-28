@@ -15,11 +15,20 @@ cya() {
 	R rtcwake -u -m no -t $time
 	sleep 5
 	loginctl suspend
+	while true; do
+		sleep 5
+		snd bell
+	done
 }
 
 after() {
 	m=$1; shift
-	at "now + $m minutes" <<-SH 2>/dev/null
+	by "now + $m minutes" $*
+}
+
+by() {
+	t=$1; shift
+	at $t <<-SH 2>/dev/null
 		echo '
 		$*
 		' > $(realpath ~f/run/spool)

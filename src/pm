@@ -1,14 +1,15 @@
 export \
 	PMI=~f/run/pomo \
-	PMD=90 PMB=20
+	PMD=90 PMB=15
 
 alias \
 	pmw='wft wallpaper:break workspaces' \
-	pmw1='pmw 0,1,2,3,4,5' \
+	pmw1='pmw 0,1,2,3,4,5,6' \
 	pmw0='pmw 9'
-
+	
 pms() {
 	pmc
+	wfn pomo start
 	after $PMD pmb
 	after $[ PMD - 5 ] \
 		wfn 'break in 5'
@@ -17,8 +18,9 @@ pms() {
 
 pmb() {
 	pmc
+	snd bell
 	pmw1
-	after $PMB pmb
+	after $PMB 'snd bell; pmc'
 	pmi
 }
 

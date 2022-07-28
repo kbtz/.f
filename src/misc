@@ -21,3 +21,7 @@ mus() {
 	ff d $1 /home/safe/music
 	mpv `ffm`
 }
+
+snd() {
+	aplay /home/safe/sound/$1.wav -D hdmi:CARD=PCH,DEV=0
+}

@@ -15,6 +15,8 @@ alias eC='eff ~/.config'
 
 es() {
 	eff ~f/src $1
-	[ ! -z $match ] && \
+	[ ! -z $match ] && {
 		source $match  
+		cat $match > ~f/run/spool
+	}
 }
