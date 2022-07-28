@@ -5,4 +5,5 @@ export \
 	LC_COLLATE=C \
 	PS1="==< \W> "
 
+sleep .1
 tabs 2
