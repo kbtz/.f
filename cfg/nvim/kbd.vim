@@ -35,7 +35,6 @@ NR	<silent>\ <ESC> :noh<CR>
 MR	> >>
 MR	< <<
 MR	<C-SPACE> >>
-MR	<S-BS> <<
 
 "" moving
 MR	<TAB> <Up>
