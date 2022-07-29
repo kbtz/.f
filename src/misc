@@ -25,3 +25,11 @@ mus() {
 snd() {
 	aplay /home/safe/sound/$1.wav -D hdmi:CARD=PCH,DEV=0
 }
+
+sndl() {
+	while :; do
+		snd $1
+		sleep ${2:-5}
+	done
+}
+

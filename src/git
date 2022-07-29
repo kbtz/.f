@@ -5,11 +5,14 @@ alias gd='g diff'
 alias gD='g diff --staged'
 alias gcb='ga; gc bump; gu'
 alias gcl='g clone'
-alias ga='g add .'
 alias gA='g reset --'
 alias gb='g branch'
 alias gU='g pull'
 alias gr='g restore'
+
+ga() {
+	g add ${1:-.}
+}
 
 gc() {
 	g commit -m "$*"
