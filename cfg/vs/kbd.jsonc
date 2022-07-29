@@ -1,0 +1,46 @@
+[
+	/*
+		vscode specific */
+	{
+		"key": "ctrl+tab",
+		"command": "workbench.action.nextEditorInGroup"
+	},
+	{
+		"key": "ctrl+shift+tab",
+		"command": "workbench.action.previousEditorInGroup"
+	},
+	{
+		"key": "ctrl+alt+tab",
+		"command": "workbench.action.navigateEditorGroups"
+	},
+	/*
+		nvim related */
+	{
+		"key": "- n",
+		"command": "workbench.action.quickOpen",
+		"when": "!editorFocus"
+	},
+	{
+		"key": "alt+enter",
+		"command": "vscode-neovim.send",
+		"args": "<M-CR>",
+		"when": "editorTextFocus && neovim.init"
+	},
+	{
+		"key": "alt+tab",
+		"command": "vscode-neovim.send",
+		"args": "<M-TAB>",
+		"when": "editorTextFocus && neovim.init"
+	},
+	{
+		"key": "ctrl+space",
+		"command": "vscode-neovim.send",
+		"args": "<C-SPACE>",
+		"when": "editorTextFocus && neovim.mode == normal"
+	},
+	{
+		"key": "ctrl+d",
+		"command": "-editor.action.outdentLines",
+		"when": "editorTextFocus && neovim.ctrlKeysInsert && !neovim.recording && neovim.mode == 'insert'"
+	},
+]
