@@ -1,4 +1,5 @@
-alias ?='type'
+alias ?='expr'
+alias ?t='type'
 alias ?x='set -x'
 alias ?X='set +x'
 alias +x='chmod +x'

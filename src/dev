@@ -3,7 +3,6 @@ d() {
 	ff d $1 /home/code && cd $match
 }
 
-alias dd='vite'
 alias db='build'
 alias dbd='build-data'
 
@@ -11,4 +10,9 @@ di() {
 	cwd=`npm prefix`/lib
 	mkdir -p $cwd
 	ni -g --prefix $cwd
+}
+
+dd() {
+	? $# = 1 && d $1
+	vite
 }
