@@ -1,5 +1,8 @@
-alias wfi='wf-info'
-alias wft='swap ~f/cfg/wayfire.ini'
+alias \
+	wfi='wf-info' \
+	wft='swap ~f/cfg/wayfire.ini' \
+	wfd='ln -f -s ~f/cfg/wfdesk.ini ~/.config/wayfire.ini' \
+	wfg='ln -f -s ~f/cfg/wfgame.ini ~/.config/wayfire.ini'
 
 function wf() {
 	wayfire > ~f/run/wf-log
@@ -8,3 +11,4 @@ function wf() {
 wfn() {
 	notify-send "$*"
 }
+

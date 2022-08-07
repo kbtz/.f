@@ -1,0 +1,14 @@
+d() {
+	[ $# -ne 1 ] && cd /home/code && return
+	ff d $1 /home/code && cd $match
+}
+
+alias dd='vite'
+alias db='build'
+alias dbd='build-data'
+
+di() {
+	cwd=`npm prefix`/lib
+	mkdir -p $cwd
+	ni -g --prefix $cwd
+}

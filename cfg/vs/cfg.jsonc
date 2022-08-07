@@ -1,16 +1,19 @@
 {
 	"[html]": {
-		"editor.defaultFormatter": "Vue.volar"
+		"editor.defaultFormatter": "vscode.html-language-features"
 	},
 	"[raku]": {
 		"editor.bracketPairColorization.enabled": false,
 		"editor.unicodeHighlight.ambiguousCharacters": false,
 		"editor.wordSeparators": "`~!#^&*()=+[{]}\\|;:'\",.<>/?"
 	},
+	"editor.wordSeparators": "`~!#^&*()=+[{]}\\|;:'\",.<>/?",
 	"editor.detectIndentation": false,
+	"editor.minimap.enabled": false,
 	"editor.fontFamily": "Fira Code, monospace",
 	"editor.fontLigatures": "'onum', 'ss01', 'ss02', 'ss03', 'ss07', 'ss08', 's09', 'cv02', 'cv16', 'cv19', 'cv23', 'cv29', 'cv30'",
 	"editor.fontSize": 16,
+	"editor.lineNumbers": "relative",
 	"editor.formatOnSave": true,
 	"editor.insertSpaces": false,
 	"editor.scrollBeyondLastLine": false,
@@ -40,6 +43,6 @@
 	],
 	"vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
 	"window.menuBarVisibility": "toggle",
-	"window.zoomLevel": 2,
-	"workbench.colorTheme": "Default Dark+"
+	"workbench.colorTheme": "Default Dark+",
+	"window.zoomLevel": 1
 }

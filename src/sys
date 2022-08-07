@@ -17,7 +17,7 @@ cya() {
 	loginctl suspend
 	while true; do
 		sleep 5
-		snd bell
+		sndl bell
 	done
 }
 

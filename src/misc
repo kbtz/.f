@@ -3,7 +3,7 @@ alias rot31="tr 'N-ZA-Mn-za-m5-90-4' 'A-Za-z0-9'"
 
 alias wfl="tail -f /tmp/wflog"
 
-alias gn='cya "tomorrow 04:00"'
+alias gn='cya "tomorrow 05:30"'
 alias nap='cya "14:30"'
 
 alias ytd='youtube-dl'
@@ -19,7 +19,11 @@ hex() {
 
 mus() {
 	ff d $1 /home/safe/music
-	mpv `ffm`
+	mpv `ffm` ${@:2}
+}
+
+musr() {
+	mus $1 --shuffle
 }
 
 snd() {

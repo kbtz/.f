@@ -12,9 +12,6 @@ NLL	r :silent\ w\ <bar>\ source\ $MYVIMRC<CR>
 NL	n :tabe quickOpen
 NL	N none createFileFromExplorer workbench.files
 
-NL	t :tabn<CR> nextEditorInGroup
-NL	T :tabp<CR> previousEditorInGroup
-
 NL	<ESC> :q!<CR> closeActiveEditor
 
 NL	s :w<CR> files.save

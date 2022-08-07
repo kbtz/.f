@@ -14,12 +14,18 @@
 		"command": "workbench.action.navigateEditorGroups"
 	},
 	/*
-		nvim related */
+		vscome leader */
 	{
-		"key": "- n",
-		"command": "workbench.action.quickOpen",
-		"when": "!editorFocus"
+		"key": "ctrl+t",
+		"command": "workbench.action.gotoSymbol",
+		"when": "editorFocus"
 	},
+	{
+		"key": "ctrl+shift+t",
+		"command": "editor.gotoNextSymbolFromResult",
+	},
+	/*
+		nvim related */
 	{
 		"key": "alt+enter",
 		"command": "vscode-neovim.send",
