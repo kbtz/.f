@@ -4,6 +4,7 @@ alias ?x='set -x'
 alias ?X='set +x'
 alias +x='chmod +x'
 
+alias cl='clear && read'
 alias readln='IFS= read'
 
 alias W='watch '

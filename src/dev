@@ -7,9 +7,9 @@ alias db='build'
 alias dbd='build-data'
 
 di() {
-	cwd=`npm prefix`/lib
+	cwd=`npm prefix`/run
 	mkdir -p $cwd
-	ni -g --prefix $cwd
+	n --prefix $cwd -g $@
 }
 
 dd() {
