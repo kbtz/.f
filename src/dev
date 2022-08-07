@@ -1,18 +1,25 @@
 d() {
-	[ $# -ne 1 ] && cd /home/code && return
-	ff d $1 /home/code && cd $match
+	?? $# = 0 && cd /home/code && return
+	ff d ${1/\//*/} /home/code && cd $match
+}
+
+dw() {
+	d w/$1
 }
 
 alias db='build'
 alias dbd='build-data'
 
 di() {
-	cwd=`npm prefix`/run
-	mkdir -p $cwd
-	n --prefix $cwd -g $@
+	ni $@ || return 1
+	local dir=`npm prefix`
+	mkdir -p $dir/run/lib
+	mv $dir/node_modules/* ${dir}/run/lib
+	rm -r ${dir}/node_modules
+	cd $cwd
 }
 
 dd() {
-	? $# = 1 && d $1
+	?? $# = 1 && d $1
 	vite
 }

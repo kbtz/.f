@@ -1,11 +1,17 @@
-alias ?='expr'
-alias ?t='type'
+alias ?='type'
+alias ??='_expr'
 alias ?x='set -x'
 alias ?X='set +x'
 alias +x='chmod +x'
 
 alias cl='clear && read'
 alias readln='IFS= read'
+
+_expr() {
+	# TODO lt gt not working?
+	expr "$@" >/dev/null
+	return $?
+}
 
 alias W='watch '
 Wf() {
