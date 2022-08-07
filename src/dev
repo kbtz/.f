@@ -4,6 +4,7 @@ d() {
 }
 
 dw() {
+	?? $# = 0 && d w && return
 	d w/$1
 }
 
@@ -16,7 +17,7 @@ di() {
 	mkdir -p $dir/run/lib
 	mv $dir/node_modules/* ${dir}/run/lib
 	rm -r ${dir}/node_modules
-	cd $cwd
+	cd $dir
 }
 
 dd() {

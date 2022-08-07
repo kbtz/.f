@@ -1,10 +1,10 @@
 [core]
-	excludesFiles= ~/.gitignore
+	excludesfiles=~f/cfg/ignore
 [credential]
-	helper = store
+	helper=store
 [init]
-	defaultBranch = pub
+	defaultBranch=pub
 [user]
-	name = kbtz
-	email = github@kbtz.dev
+	name=kbtz
+	email=github@kbtz.dev
 
