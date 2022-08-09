@@ -17,7 +17,7 @@ alias eB='eff ~/.local/bin'
 alias er='eff ~f/run'
 
 es() {
-	eff ~f/src $1 && echo yay2
+	eff ~f/src $1
 	?? $match && {
 		source $match  
 		echo "source $match" > ~f/run/spool
