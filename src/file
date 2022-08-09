@@ -9,6 +9,10 @@ alias dud='du -hd1'
 alias rmr='rm -rf'
 alias c.='cd ~f'
 
+lnu() {
+	ln -s ../../$*
+}
+
 c() {
 	for match in $1*; do
 		[ -d $match ] && cd $match && return
@@ -30,15 +34,15 @@ cc() {
 }
 
 cr() {
-	cd $(realpath $PWD)
+	cd $(realpath ${1:-$PWD})
 }
 
-alias ffm='echo $match'
 ff() {
-	[ $# -lt 2 ] && return 1
+	unset match
+	?: $# -lt 2 && r1
+	
 	local type=$1 search=${2/\//*/} base=${3:-.}
-	base=${base%*/} 
-	for match in $base/{,.}{$search*,*$search*}; do
+	for match in ${base%*/}/{,.}{$search*,*$search*}; do
 		[ -$type $match ] || continue
 		match=`realpath $match`
 		return 0
@@ -46,6 +50,8 @@ ff() {
 	
 	unset match && return 1
 }
+
+alias ffm='echo $match'
 
 fw() {
 	evm=('s/'{C/create,U/modify,M/move,D/delete}',/;' 's/,$//')

@@ -1,5 +1,5 @@
-alias r='raku'
-alias rr='raku; reset'
+alias rk='raku'
+alias rkr='raku; reset'
 
 alias z='zef'
 alias zi='z install'

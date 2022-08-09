@@ -1,6 +1,7 @@
 #!/bin/env -S echo -e Usage: source .f\n -- 
 
-~f/bin/read ~f/src/* > ~f/run/last
+source <(~f/bin/aliases ~f/src/*)
 
-declare -g -A F
-source ~f/run/last
+for file in ~f/src/*; do
+	source $file
+done

@@ -3,24 +3,16 @@ d() {
 	ff d ${1/\//*/} /home/code && cd $match
 }
 
-dw() {
-	?? $# = 0 && d w && return
-	d w/$1
+dv() {
+	?? $# = 2 && d $2
+	$1
 }
 
-alias db='build'
-alias dbd='build-data'
-
-di() {
-	ni $@ || return 1
-	local dir=`npm prefix`
-	mkdir -p $dir/run/lib
-	mv $dir/node_modules/* ${dir}/run/lib
-	rm -r ${dir}/node_modules
-	cd $dir
+dV() {
+	dv $@
+	shh cd -
 }
 
-dd() {
-	?? $# = 1 && d $1
-	vite
-}
+alias ds='dv start'
+alias db='dv build'
+alias dbd='dv build-data'

@@ -20,7 +20,7 @@ nrt() { n remove @types/$1; }
 nrwt() { nr $1 && nrt $1; }
 
 nlk() {
-	names=" $*"
+	names=" $*" #yay
 	nl ${names// / @kbtz/}
 }
 

@@ -1,22 +1,37 @@
 alias e='nvim'
+alias ep='nvimpager'
 
 eff() {
-	[ $# -eq 1 ] && { cd $1; cr; return 0; }
+	?? $# = 1 && {
+		cr $1
+		ret 0
+	}
 	
-	ff f $2 $1		\
-		&& e $match	\
-		|| cd $1
+	ff f $2 $1 && e $match || cr $1
 }
 
 alias ec='eff ~f/cfg'
-alias eb='eff ~f/bin'
-alias er='eff ~f/run'
 alias eC='eff ~/.config'
+alias eb='eff ~f/bin'
+alias eB='eff ~/.local/bin'
+alias er='eff ~f/run'
 
 es() {
-	eff ~f/src $1
-	[ ! -z $match ] && {
+	eff ~f/src $1 && echo yay2
+	?? $match && {
 		source $match  
-		cat $match > ~f/run/spool
+		echo "source $match" > ~f/run/spool
+	}
+}
+
+ef() {
+	?? $# = 0 && r1
+	local def=(`loc $1`)
+	
+	?? $def && {
+		local file=`realpath ${def[1]}` line=${def[0]}
+		e $file +$line
+		source $file
+		echo "source $file" > ~f/run/spool
 	}
 }

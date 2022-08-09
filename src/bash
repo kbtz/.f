@@ -1,18 +1,59 @@
-alias ?='type'
-alias ??='_expr'
+alias ?='wat'
+alias ??='xpr'
+alias ?:='test'
 alias ?x='set -x'
 alias ?X='set +x'
 alias +x='chmod +x'
 
 alias cl='clear && read'
 alias readln='IFS= read'
+alias ret='return '
+alias r0='return 0'
+alias r1='return 1'
 
-_expr() {
+alias mkd='mkdir -p'
+alias mkt='mktemp'
+
+xpr() {
 	# TODO lt gt not working?
-	expr "$@" >/dev/null
+	expr "$@" &> /dev/null
 	return $?
 }
 
+xpd () {
+	local cmd=$1
+	${BASH_ALIASES[$cmd]:-$cmd} $*
+}
+
+wat() {
+	read def <<< `type $1`
+	echo -n "$def "
+	
+	?: "${def: -13}" = "is a function" && {
+		color 8; loc $1; color
+		type $1 | tail -n+4 | head -n-1 \
+			| nvimpager -c -- -c 'setf sh'
+	} || echo
+	
+	unset def
+}
+
+loc() {
+	shopt -s extdebug
+	declare -F $1 | cut -d' ' -f2-
+	shopt -u extdebug
+}
+
+color() {
+	?? $# \
+		&& echo -ne "\001\e[38;5;$1m\002" \
+		|| echo -ne "\001\e[0;0m\002"
+}
+
+shh() {
+	$* &> /dev/null
+}
+	
 alias W='watch '
 Wf() {
     watch -x bash -i -c "$@"

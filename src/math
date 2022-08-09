@@ -1,0 +1,7 @@
+diag() {
+	local idx size=$1; shift
+	for idx in `seq 1 $size`; do
+		idx=$[idx + size * (idx - 1)] 
+		echo -n ${!idx}\   
+	done
+}

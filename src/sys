@@ -45,6 +45,7 @@ spool() {
 	while :; do
 		fw $sp
 		source $sp
+		cat $sp > ${sp}-last
 		>$sp
 	done
 }

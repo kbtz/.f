@@ -20,6 +20,13 @@ gc() {
 }
 
 ghcl() {
+	local name=$2 repo=$1
+	
+	?? $# = 1 && {
+		name=${1/\/*/}
+		repo=${1/*\//}
+	}
+	
 	gcl https://github.com/${1}.git ${@:2}
 }
 
