@@ -2,6 +2,7 @@ alias l='ls -lh'
 alias ls='/bin/ls -aA \
  --group-directories-first --sort=extension --color=auto'
 alias lt='tree -d -L 2 -a'
+alias lt1='tree -d -L 1 -a'
 alias ..='cd ..'
 alias ...='cd ../..'
 

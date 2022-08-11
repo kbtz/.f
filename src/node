@@ -1,7 +1,7 @@
 alias n='npm'
 alias nI='n init'
 alias ni='n install'
-alias nig='n install --global'
+alias nig='n install -g'
 alias nid='n install -D'
 alias nr='n remove'
 alias ns='n run start'
@@ -15,12 +15,13 @@ alias hsl='live-server --port=80 --host=kdev --no-browser --no-css-inject'
 
 nit() { n install -D @types/$1; }
 niwt() { ni $1 && nit $1; }
+nigt() { n install -g @types/$1; }
 
 nrt() { n remove @types/$1; }
 nrwt() { nr $1 && nrt $1; }
 
 nlk() {
-	names=" $*" #yay
+	names=" $*"
 	nl ${names// / @kbtz/}
 }
 
