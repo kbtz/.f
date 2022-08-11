@@ -17,6 +17,9 @@ command! -nargs=+ MAP call
 command! -nargs=+ VS call
 	\ s:exef("call VSCodeNotify('%s.action.%s')" , [<f-args>])
 
+command! -nargs=+ VSA call
+	\ s:exef("call VSCodeNotify('%s')" , [<f-args>])
+
 fu! s:run(...)
 	for name in a:000
 		EXE 'runtime ' . name . '.vim'
@@ -35,7 +38,11 @@ fu! s:nrmap(mode, layer, key, cmd, vsa = 'same', vsns = 'workbench')
 	en
 	
 	if g:vs && a:vsa !~ '\v^(same|none)$'
-		EXE join([l:binding, ':VS', a:vsns, a:vsa, '<CR>'])
+		if a:vsa =~ '\v^(macro)\.'
+			EXE join([l:binding, ':VSA', a:vsa, '<CR>'])
+		el
+			EXE join([l:binding, ':VS', a:vsns, a:vsa, '<CR>'])
+		en
 	en
 endf
 

@@ -7,17 +7,19 @@
 		"editor.unicodeHighlight.ambiguousCharacters": false,
 		"editor.wordSeparators": "`~!#^&*()=+[{]}\\|;:'\",.<>/?"
 	},
-	"editor.wordSeparators": "`~!#^&*()=+[{]}\\|;:'\",.<>/?",
 	"editor.detectIndentation": false,
-	"editor.minimap.enabled": false,
+	"editor.folding": false,
 	"editor.fontFamily": "Fira Code, monospace",
 	"editor.fontLigatures": "'onum', 'ss01', 'ss02', 'ss03', 'ss07', 'ss08', 's09', 'cv02', 'cv16', 'cv19', 'cv23', 'cv29', 'cv30'",
 	"editor.fontSize": 16,
-	"editor.lineNumbers": "relative",
 	"editor.formatOnSave": true,
+	"editor.glyphMargin": false,
 	"editor.insertSpaces": false,
+	"editor.lineNumbers": "off",
+	"editor.minimap.enabled": false,
 	"editor.scrollBeyondLastLine": false,
 	"editor.tabSize": 2,
+	"editor.wordSeparators": "`~!#^&*()=+[{]}\\|;:'\",.<>/?",
 	"explorer.autoReveal": false,
 	"explorer.confirmDelete": false,
 	"explorer.sortOrder": "type",
@@ -28,6 +30,7 @@
 		"node_modules": true,
 		"package-lock.json": true
 	},
+	"git.enabled": false,
 	"javascript.preferences.quoteStyle": "single",
 	"javascript.updateImportsOnFileMove.enabled": "always",
 	"raku.includePaths": [
@@ -36,13 +39,38 @@
 	"simpleBrowser.focusLockIndicator.enabled": false,
 	"terminal.integrated.fontSize": 12,
 	"typescript.preferences.quoteStyle": "single",
+	"typescript.tsserver.log": "verbose",
+	"typescript.tsserver.trace": "verbose",
 	"typescript.updateImportsOnFileMove.enabled": "never",
 	"update.mode": "none",
 	"vscode_custom_css.imports": [
 		"file:///home/code/.f/cfg/vs/custom.css"
 	],
 	"vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
+	"vscode-neovim.useCtrlKeysForInsertMode": true,
+	"vscode-neovim.useCtrlKeysForNormalMode": true,
 	"window.menuBarVisibility": "toggle",
+	"window.zoomLevel": 1,
 	"workbench.colorTheme": "Default Dark+",
-	"window.zoomLevel": 1
+	"workbench.editor.closeEmptyGroups": false,
+	"workbench.editor.showTabs": false,
+	"zenMode.fullScreen": false,
+	"zenMode.silentNotifications": true,
+	"workbench.statusBar.visible": false,
+	"macros.list": {
+		"wq": [
+			"workbench.action.files.save",
+			"workbench.action.closeActiveEditor",
+		],
+		"ei": [
+			"workbench.files.action.focusFilesExplorer",
+			"workbench.action.focusActiveEditorGroup",
+		],
+		"oi": [
+			"workbench.files.action.focusOpenEditorsView",
+			"workbench.action.focusActiveEditorGroup",
+		],
+	},
+	"workbench.sideBar.location": "right",
+	"workbench.activityBar.visible": false
 }

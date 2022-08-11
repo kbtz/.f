@@ -6,26 +6,113 @@
 		"command": "workbench.action.nextEditorInGroup"
 	},
 	{
+		"key": "ctrl+tab",
+		"command": "workbench.action.nextEditorInGroup"
+	},
+	{
 		"key": "ctrl+shift+tab",
 		"command": "workbench.action.previousEditorInGroup"
 	},
 	{
-		"key": "ctrl+alt+tab",
+		"key": "ctrl+alt+p",
 		"command": "workbench.action.navigateEditorGroups"
 	},
-	/*
-		vscome leader */
 	{
-		"key": "ctrl+t",
+		"key": "ctrl+alt+z",
+		"command": "workbench.action.joinAllGroups"
+	},
+	/*
+		vscode leader */
+	{
+		"key": "= =",
+		"command": "workbench.action.toggleZenMode",
+		"when": "!editorTextFocus || neovim.mode != insert"
+	},
+	{
+		"key": "= a",
+		"command": "noop",
+		"when": "!editorTextFocus || neovim.mode != insert"
+	},
+	{
+		"key": "= e",
+		"command": "macros.ei",
+		"when": "!editorTextFocus || neovim.mode != insert"
+	},
+	{
+		"key": "= o",
+		"command": "macros.oi",
+		"when": "!editorTextFocus || neovim.mode != insert"
+	},
+	{
+		"key": "= shift+e",
+		"command": "workbench.files.action.focusFilesExplorer",
+		"when": "!editorTextFocus || neovim.mode != insert"
+	},
+	{
+		"key": "= shift+o",
+		"command": "workbench.files.action.focusOpenEditorsView",
+		"when": "!editorTextFocus || neovim.mode != insert"
+	},
+	{
+		"key": "= u",
+		"command": "workbench.action.toggleZenMode",
+		"when": "!editorTextFocus || neovim.mode != insert"
+	},
+	{
+		"key": "= i",
+		"command": "workbench.action.focusActiveEditorGroup",
+		"when": "!editorTextFocus || neovim.mode != insert"
+	},
+	{
+		"key": "= y",
 		"command": "workbench.action.gotoSymbol",
-		"when": "editorFocus"
+		"when": "!editorTextFocus || neovim.mode != insert"
 	},
 	{
-		"key": "ctrl+shift+t",
+		"key": "= shift+y",
 		"command": "editor.gotoNextSymbolFromResult",
+		"when": "!editorTextFocus || neovim.mode != insert"
+	},
+	{
+		"key": "= k",
+		"command": "workbench.action.openGlobalKeybindingsFile",
+		"when": "!editorTextFocus || neovim.mode != insert"
+	},
+	{
+		"key": "= shift+k",
+		"command": "workbench.action.openGlobalKeybindings",
+		"when": "!editorTextFocus || neovim.mode != insert"
+	},
+	{
+		"key": "= x",
+		"command": "workbench.action.openSettingsJson",
+		"when": "!editorTextFocus || neovim.mode != insert"
+	},
+	{
+		"key": "= shift+x",
+		"command": "workbench.action.openGlobalSettings",
+		"when": "!editorTextFocus || neovim.mode != insert"
 	},
 	/*
-		nvim related */
+		vscode C-A */
+	{
+		"key": "ctrl+alt+l",
+		"command": "workbench.action.increaseViewHeight"
+	},
+	{
+		"key": "ctrl+alt+e",
+		"command": "workbench.action.decreaseViewHeight"
+	},
+	{
+		"key": "ctrl+alt+o",
+		"command": "workbench.action.decreaseViewWidth"
+	},
+	{
+		"key": "ctrl+alt+u",
+		"command": "workbench.action.increaseViewWidth"
+	},
+	/*
+		nvim forwards */
 	{
 		"key": "alt+enter",
 		"command": "vscode-neovim.send",
@@ -45,8 +132,9 @@
 		"when": "editorTextFocus && neovim.mode == normal"
 	},
 	{
-		"key": "ctrl+d",
-		"command": "-editor.action.outdentLines",
-		"when": "editorTextFocus && neovim.ctrlKeysInsert && !neovim.recording && neovim.mode == 'insert'"
+		"key": "shift+backspace",
+		"command": "vscode-neovim.send",
+		"args": "<C-A-SPACE>",
+		"when": "editorTextFocus && neovim.mode == normal"
 	},
 ]

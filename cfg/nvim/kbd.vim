@@ -15,7 +15,7 @@ NL	N none createFileFromExplorer workbench.files
 NL	<ESC> :q!<CR> closeActiveEditor
 
 NL	s :w<CR> files.save
-NL	= :wq<CR> none
+NL	= :wq<CR> macros.wq
 
 NL	c :%s///g<left><left><left> startFindReplaceAction editor
 NL	y none rename editor
@@ -32,6 +32,7 @@ NR	<silent>\ <ESC> :noh<CR>
 MR	> >>
 MR	< <<
 MR	<C-SPACE> >>
+MR	<C-A-SPACE> <<
 
 "" moving
 MR	<TAB> <Up>
