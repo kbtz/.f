@@ -1,3 +1,18 @@
 .explorer-folders-view {
 	font-family: "Fira Code", monospace;
 }
+
+.editor-group-letterpress {
+	transition: filter 300ms ease-out;
+	will-change: filter;
+	background-image: url('vscode-file:///home/safe/kdev/logo.svg') !important;
+}
+
+.editor-group-container.empty.active 
+.editor-group-letterpress {
+	filter: brightness(.8);
+}
+
+.content.empty .watermark-box {
+	display: none !important;
+}

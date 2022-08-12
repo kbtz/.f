@@ -6,71 +6,66 @@
 		"command": "workbench.action.nextEditorInGroup"
 	},
 	{
-		"key": "ctrl+tab",
-		"command": "workbench.action.nextEditorInGroup"
-	},
-	{
 		"key": "ctrl+shift+tab",
 		"command": "workbench.action.previousEditorInGroup"
 	},
+	/*
+		nvim leader */
 	{
-		"key": "ctrl+alt+p",
-		"command": "workbench.action.navigateEditorGroups"
+		"key": "- escape",
+		"command": "workbench.action.closeActiveEditor",
+		"when": "!editorTextFocus"
 	},
 	{
-		"key": "ctrl+alt+z",
-		"command": "workbench.action.joinAllGroups"
+		"key": "- escape",
+		"command": "workbench.action.closeGroup",
+		"when": "activeEditorGroupEmpty && multipleEditorGroups"
+	},
+	{
+		"key": "- n",
+		"command": "workbench.action.quickOpen",
+		"when": "!editorTextFocus"
 	},
 	/*
 		vscode leader */
 	{
-		"key": "= =",
-		"command": "workbench.action.toggleZenMode",
+		"key": "= -",
+		"command": "workbench.action.focusActiveEditorGroup",
+		"when": "!editorTextFocus"
+	},
+	{
+		"key": "= escape",
+		"command": "workbench.action.closeSidebar",
 		"when": "!editorTextFocus || neovim.mode != insert"
 	},
 	{
 		"key": "= a",
-		"command": "noop",
-		"when": "!editorTextFocus || neovim.mode != insert"
-	},
-	{
-		"key": "= e",
-		"command": "macros.ei",
+		"command": "macros.sidebar",
 		"when": "!editorTextFocus || neovim.mode != insert"
 	},
 	{
 		"key": "= o",
-		"command": "macros.oi",
-		"when": "!editorTextFocus || neovim.mode != insert"
-	},
-	{
-		"key": "= shift+e",
-		"command": "workbench.files.action.focusFilesExplorer",
-		"when": "!editorTextFocus || neovim.mode != insert"
-	},
-	{
-		"key": "= shift+o",
 		"command": "workbench.files.action.focusOpenEditorsView",
 		"when": "!editorTextFocus || neovim.mode != insert"
 	},
 	{
+		"key": "= e",
+		"command": "workbench.files.action.focusFilesExplorer",
+		"when": "!editorTextFocus || neovim.mode != insert"
+	},
+	{
 		"key": "= u",
-		"command": "workbench.action.toggleZenMode",
+		"command": "macros.exp-collapsed",
 		"when": "!editorTextFocus || neovim.mode != insert"
 	},
 	{
 		"key": "= i",
-		"command": "workbench.action.focusActiveEditorGroup",
+		"command": "workbench.action.openSettingsJson",
 		"when": "!editorTextFocus || neovim.mode != insert"
 	},
 	{
-		"key": "= y",
-		"command": "workbench.action.gotoSymbol",
-		"when": "!editorTextFocus || neovim.mode != insert"
-	},
-	{
-		"key": "= shift+y",
-		"command": "editor.gotoNextSymbolFromResult",
+		"key": "= shift+i",
+		"command": "workbench.action.openGlobalSettings",
 		"when": "!editorTextFocus || neovim.mode != insert"
 	},
 	{
@@ -84,17 +79,50 @@
 		"when": "!editorTextFocus || neovim.mode != insert"
 	},
 	{
-		"key": "= x",
-		"command": "workbench.action.openSettingsJson",
+		"key": "= c",
+		"command": "workbench.action.showCommands",
 		"when": "!editorTextFocus || neovim.mode != insert"
 	},
 	{
-		"key": "= shift+x",
-		"command": "workbench.action.openGlobalSettings",
+		"key": "= x",
+		"command": "workbench.view.extensions",
+		"when": "!editorTextFocus || neovim.mode != insert"
+	},
+	{
+		"key": "= d",
+		"command": "workbench.action.toggleDevTools",
 		"when": "!editorTextFocus || neovim.mode != insert"
 	},
 	/*
-		vscode C-A */
+		groups */
+	{
+		"key": "ctrl+alt+p",
+		"command": "workbench.action.focusNextGroup"
+	},
+	{
+		"key": "ctrl+alt+z",
+		"command": "workbench.action.focusPreviousGroup"
+	},
+	{
+		"key": "ctrl+alt+j",
+		"command": "workbench.action.joinAllGroups"
+	},
+	{
+		"key": "ctrl+shift+alt+l",
+		"command": "workbench.action.newGroupAbove"
+	},
+	{
+		"key": "ctrl+shift+alt+e",
+		"command": "workbench.action.newGroupBelow"
+	},
+	{
+		"key": "ctrl+shift+alt+o",
+		"command": "workbench.action.newGroupLeft"
+	},
+	{
+		"key": "ctrl+shift+alt+u",
+		"command": "workbench.action.newGroupRight"
+	},
 	{
 		"key": "ctrl+alt+l",
 		"command": "workbench.action.increaseViewHeight"
@@ -137,4 +165,21 @@
 		"args": "<C-A-SPACE>",
 		"when": "editorTextFocus && neovim.mode == normal"
 	},
+	/*
+		explorer */
+	{
+		"key": "space",
+		"command": "list.toggleSelection",
+		"when": "filesExplorerFocus && !inputFocus"
+	},
+	{
+		"key": "enter",
+		"command": "macros.exp-open",
+		"when": "filesExplorerFocus && !explorerResourceIsFolder && !inputFocus"
+	},
+	{
+		"key": "enter",
+		"command": "macros.exp-enter",
+		"when": "filesExplorerFocus && explorerResourceIsFolder && !inputFocus"
+	}
 ]

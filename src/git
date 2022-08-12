@@ -12,7 +12,7 @@ alias gU='g pull'
 alias gr='g restore'
 
 ga() {
-	g add ${1:-.}
+	g add ${1:-.} ${@:2}
 }
 
 gc() {

@@ -15,13 +15,16 @@ NL	N none createFileFromExplorer workbench.files
 NL	<ESC> :q!<CR> closeActiveEditor
 
 NL	s :w<CR> files.save
-NL	= :wq<CR> macros.wq
+NLL	s :wq<CR> macros.wq
+
+NL	= none focusSideBar
 
 NL	c :%s///g<left><left><left> startFindReplaceAction editor
 NL	y none rename editor
 
 NL	h none showHover editor
 NL	g none revealDefinition editor
+NL	y none gotoSymbol
 
 "" dirty new lines to keep indentation
 NR	o ox<BS><ESC>
