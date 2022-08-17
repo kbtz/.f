@@ -13,6 +13,10 @@
 	filter: brightness(.8);
 }
 
+.pane-body.open-editors .monaco-list-row {
+	padding-left: 0 !important;
+}
+
 .content.empty .watermark-box {
 	display: none !important;
 }

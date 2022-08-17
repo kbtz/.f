@@ -1,18 +1,19 @@
-d() {
-	?? $# = 0 && cd /home/code && return
-	ff d ${1/\//*/} /home/code && cd $match
+alias d='dw'
+export DW=/home/code/web
+
+dw() {
+	?? $# = 0 && cd $DW && r0
+	ff d ${1/\//*/} $DW && cd $match
+}
+
+ds() {
+	ff d ${1/\//*/} $DW && dw || r1
+	NAME=${match##*/} \
+		vite $DW ${@:2}
 }
 
 dv() {
-	?? $# = 2 && d $2
-	$1
+	vite $@
 }
 
-dV() {
-	dv $@
-	shh cd -
-}
-
-alias ds='dv start'
-alias db='dv build'
-alias dbd='dv build-data'
+alias dbd='build-data'

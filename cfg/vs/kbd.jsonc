@@ -14,17 +14,17 @@
 	{
 		"key": "- escape",
 		"command": "workbench.action.closeActiveEditor",
-		"when": "!editorTextFocus"
+		"when": "!inputFocus && !editorTextFocus"
 	},
 	{
 		"key": "- escape",
 		"command": "workbench.action.closeGroup",
-		"when": "activeEditorGroupEmpty && multipleEditorGroups"
+		"when": "!inputFocus && activeEditorGroupEmpty && multipleEditorGroups"
 	},
 	{
 		"key": "- n",
 		"command": "workbench.action.quickOpen",
-		"when": "!editorTextFocus"
+		"when": "!inputFocus && !editorTextFocus || activeEditorGroupEmpty"
 	},
 	/*
 		vscode leader */
@@ -108,19 +108,19 @@
 		"command": "workbench.action.joinAllGroups"
 	},
 	{
-		"key": "ctrl+shift+alt+l",
+		"key": "ctrl+alt+k l",
 		"command": "workbench.action.newGroupAbove"
 	},
 	{
-		"key": "ctrl+shift+alt+e",
+		"key": "ctrl+alt+k e",
 		"command": "workbench.action.newGroupBelow"
 	},
 	{
-		"key": "ctrl+shift+alt+o",
+		"key": "ctrl+alt+k o",
 		"command": "workbench.action.newGroupLeft"
 	},
 	{
-		"key": "ctrl+shift+alt+u",
+		"key": "ctrl+alt+n u",
 		"command": "workbench.action.newGroupRight"
 	},
 	{

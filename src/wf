@@ -9,6 +9,6 @@ function wf() {
 }
 
 wfn() {
-	notify-send "$*"
+	notify-send $*
 }
 

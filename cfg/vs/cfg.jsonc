@@ -12,7 +12,6 @@
 	"editor.fontFamily": "Fira Code, monospace",
 	"editor.fontLigatures": "'onum', 'ss01', 'ss02', 'ss03', 'ss07', 'ss08', 's09', 'cv02', 'cv16', 'cv19', 'cv23', 'cv29', 'cv30'",
 	"editor.fontSize": 16,
-	"workbench.startupEditor": "none",
 	"editor.formatOnSave": true,
 	"editor.glyphMargin": true,
 	"editor.insertSpaces": false,
@@ -37,18 +36,18 @@
 	"macros.list": {
 		"exp-collapsed": [
 			"workbench.files.action.focusFilesExplorer",
-			"workbench.files.action.collapseExplorerFolders",
+			"workbench.files.action.collapseExplorerFolders"
 		],
 		"exp-enter": [
 			"list.expand",
 			"list.toggleKeyboardNavigation",
-			"list.toggleKeyboardNavigation",
+			"list.toggleKeyboardNavigation"
 		],
 		"exp-open": [
 			"explorer.openAndPassFocus",
 			"workbench.files.action.focusFilesExplorer",
 			"list.toggleKeyboardNavigation",
-			"list.toggleKeyboardNavigation",
+			"list.toggleKeyboardNavigation"
 		],
 		"sidebar": [
 			"workbench.action.focusSideBar",
@@ -68,27 +67,25 @@
 	"typescript.updateImportsOnFileMove.enabled": "never",
 	"update.mode": "none",
 	"vscode_custom_css.imports": [
-		"file:///home/code/.f/cfg/vs/custom.css"
+		"file:///home/code/.f/cfg/vs/stl.css"
 	],
 	"vscode-neovim.neovimExecutablePaths.linux": "/usr/bin/nvim",
 	"vscode-neovim.useCtrlKeysForInsertMode": true,
 	"vscode-neovim.useCtrlKeysForNormalMode": true,
 	"window.menuBarVisibility": "toggle",
 	"window.zoomLevel": 1,
-	"workbench.colorTheme": "Default Dark+",
-	"workbench.editor.closeEmptyGroups": false,
-	"workbench.editor.showTabs": false,
-	"zenMode.fullScreen": false,
-	"workbench.editor.openSideBySideDirection": "down",
-	"zenMode.hideActivityBar": false,
-	"zenMode.hideStatusBar": false,
-	"zenMode.silentNotifications": true,
-	"breadcrumbs.enabled": false,
 	"workbench.colorCustomizations": {
 		"statusBar.background": "#161616",
-		"statusBar.noFolderBackground": "#161616",
-		"statusBar.foreground": "#AAA"
+		"statusBar.foreground": "#AAA",
+		"statusBar.noFolderBackground": "#161616"
 	},
-	"workbench.activityBar.visible": false,
-	"search.searchOnType": false
+	"workbench.colorTheme": "Default Dark+",
+	"workbench.editor.closeEmptyGroups": false,
+	"workbench.editor.openSideBySideDirection": "down",
+	"workbench.editor.showTabs": false,
+	"workbench.startupEditor": "none",
+	"zenMode.fullScreen": false,
+	"zenMode.hideActivityBar": false,
+	"zenMode.hideStatusBar": false,
+	"zenMode.silentNotifications": true
 }
