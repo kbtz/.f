@@ -29,7 +29,7 @@ ef() {
 	local def=(`loc $1`)
 	
 	?? $def && {
-		local file=`realpath ${def[1]}` line=${def[0]}
+		local file=`realpath ${def[0]}` line=${def[1]}
 		e $file +$line
 		source $file
 		echo "source $file" > ~f/run/spool

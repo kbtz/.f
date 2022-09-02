@@ -12,6 +12,7 @@
 	"editor.fontFamily": "Fira Code, monospace",
 	"editor.fontLigatures": "'onum', 'ss01', 'ss02', 'ss03', 'ss07', 'ss08', 's09', 'cv02', 'cv16', 'cv19', 'cv23', 'cv29', 'cv30'",
 	"editor.fontSize": 16,
+	"editor.bracketPairColorization.enabled": false,
 	"editor.formatOnSave": true,
 	"editor.glyphMargin": true,
 	"editor.insertSpaces": false,
@@ -24,13 +25,15 @@
 	"explorer.confirmDelete": false,
 	"explorer.sortOrder": "type",
 	"files.exclude": {
+		".git": true,
 		".github": true,
 		".gitignore": true,
+		".gitattributes": true,
 		".precomp": true,
 		"node_modules": true,
 		"package-lock.json": true
 	},
-	"git.enabled": true,
+	"git.enabled": false,
 	"javascript.preferences.quoteStyle": "single",
 	"javascript.updateImportsOnFileMove.enabled": "always",
 	"macros.list": {
@@ -87,5 +90,6 @@
 	"zenMode.fullScreen": false,
 	"zenMode.hideActivityBar": false,
 	"zenMode.hideStatusBar": false,
-	"zenMode.silentNotifications": true
+	"zenMode.silentNotifications": true,
+	"workbench.activityBar.visible": false
 }

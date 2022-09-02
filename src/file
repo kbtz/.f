@@ -1,14 +1,18 @@
 alias l='ls -lh'
 alias ls='/bin/ls -aA \
  --group-directories-first --sort=extension --color=auto'
-alias lt='tree -d -L 2 -a'
-alias lt1='tree -d -L 1 -a'
+alias lT='tree -L 1 -a'
+alias lTT='tree -L 2 -a'
+alias lt='tree -d -L 1 -a'
+alias ltt='tree -d -L 2 -a'
 alias ..='cd ..'
 alias ...='cd ../..'
 
 alias dud='du -hd1'
 alias rmr='rm -rf'
+alias cpa='cp -aux'
 alias c.='cd ~f'
+alias c-='cd -'
 
 lnu() {
 	ln -s ../../$*

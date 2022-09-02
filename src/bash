@@ -10,6 +10,7 @@ alias readln='IFS= read'
 alias ret='return '
 alias r0='return 0'
 alias r1='return 1'
+alias r?='return $?'
 
 alias mkd='mkdir -p'
 alias mkt='mktemp'
@@ -21,8 +22,9 @@ xpr() {
 }
 
 xpd () {
-	local cmd=$1
-	${BASH_ALIASES[$cmd]:-$cmd} $*
+	?: -z "${BASH_ALIASES[$1]}" && { $@; r?; }
+	local exp=(${BASH_ALIASES[$1]})
+	xpd ${exp[0]} ${exp[@]:1} ${@:2}
 }
 
 wat() {
@@ -40,7 +42,8 @@ wat() {
 
 loc() {
 	shopt -s extdebug
-	declare -F $1 | cut -d' ' -f2-
+	local loc=(`declare -F $1 | cut -d' ' -f2-`)
+	echo ${loc[1]} ${loc[0]}
 	shopt -u extdebug
 }
 

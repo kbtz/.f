@@ -27,7 +27,7 @@ ghcl() {
 		repo=${1/*\//}
 	}
 	
-	gcl https://github.com/${1}.git ${@:2}
+	gcl https://github.com/${name}/${repo}.git ${@:2}
 }
 
 gkcl() {

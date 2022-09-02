@@ -18,8 +18,8 @@ hex() {
 }
 
 mus() {
-	ff d $1 /home/safe/music
-	mpv `ffm` ${@:2}
+	ff d $1 /home/safe/music || r1
+	mpv $match ${@:2}
 }
 
 musr() {

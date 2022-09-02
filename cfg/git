@@ -1,12 +1,22 @@
 [core]
-	excludesfiles=~f/cfg/ignore
+	excludesfiles = ~f/cfg/ignore
+	pager = diff-so-fancy | less --tabs=4 -RFX
 	
 [credential]
-	helper=store
+	helper = store
 	
 [init]
-	defaultBranch=pub
+	defaultBranch = pub
 	
 [user]
-	name=kbtz
-	email=github@kbtz.dev
+	name = kbtz
+	email = github@kbtz.dev
+	
+[add.interactive]
+	useBuiltin = false
+
+[merge]
+	conflictstyle = diff3
+
+[diff]
+	colorMoved = default

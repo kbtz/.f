@@ -7,9 +7,16 @@ dw() {
 }
 
 ds() {
-	ff d ${1/\//*/} $DW && dw || r1
-	NAME=${match##*/} \
-		vite $DW ${@:2}
+	ff d ${1/\//*/} $DW || r1
+	local DIR=${match##*/}
+	NAME=$DIR vite ${@:2}
+}
+
+dr() {
+	(($# >= 3)) || r1
+	dw $1 || r1
+	xpd ${@:2}
+	shh cd -
 }
 
 dv() {

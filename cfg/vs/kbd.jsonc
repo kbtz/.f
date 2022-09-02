@@ -31,67 +31,67 @@
 	{
 		"key": "= -",
 		"command": "workbench.action.focusActiveEditorGroup",
-		"when": "!editorTextFocus"
+		"when": "!inputFocus && !editorTextFocus"
 	},
 	{
 		"key": "= escape",
 		"command": "workbench.action.closeSidebar",
-		"when": "!editorTextFocus || neovim.mode != insert"
+		"when": "!inputFocus && !editorTextFocus || neovim.mode != insert"
 	},
 	{
 		"key": "= a",
 		"command": "macros.sidebar",
-		"when": "!editorTextFocus || neovim.mode != insert"
+		"when": "!inputFocus && !editorTextFocus || neovim.mode != insert"
 	},
 	{
 		"key": "= o",
 		"command": "workbench.files.action.focusOpenEditorsView",
-		"when": "!editorTextFocus || neovim.mode != insert"
+		"when": "!inputFocus && !editorTextFocus || neovim.mode != insert"
 	},
 	{
 		"key": "= e",
 		"command": "workbench.files.action.focusFilesExplorer",
-		"when": "!editorTextFocus || neovim.mode != insert"
+		"when": "!inputFocus && !editorTextFocus || neovim.mode != insert"
 	},
 	{
 		"key": "= u",
 		"command": "macros.exp-collapsed",
-		"when": "!editorTextFocus || neovim.mode != insert"
+		"when": "!inputFocus && !editorTextFocus || neovim.mode != insert"
 	},
 	{
 		"key": "= i",
 		"command": "workbench.action.openSettingsJson",
-		"when": "!editorTextFocus || neovim.mode != insert"
+		"when": "!inputFocus && !editorTextFocus || neovim.mode != insert"
 	},
 	{
 		"key": "= shift+i",
 		"command": "workbench.action.openGlobalSettings",
-		"when": "!editorTextFocus || neovim.mode != insert"
+		"when": "!inputFocus && !editorTextFocus || neovim.mode != insert"
 	},
 	{
 		"key": "= k",
 		"command": "workbench.action.openGlobalKeybindingsFile",
-		"when": "!editorTextFocus || neovim.mode != insert"
+		"when": "!inputFocus && !editorTextFocus || neovim.mode != insert"
 	},
 	{
 		"key": "= shift+k",
 		"command": "workbench.action.openGlobalKeybindings",
-		"when": "!editorTextFocus || neovim.mode != insert"
+		"when": "!inputFocus && !editorTextFocus || neovim.mode != insert"
 	},
 	{
 		"key": "= c",
 		"command": "workbench.action.showCommands",
-		"when": "!editorTextFocus || neovim.mode != insert"
+		"when": "!inputFocus && !editorTextFocus || neovim.mode != insert"
 	},
 	{
 		"key": "= x",
 		"command": "workbench.view.extensions",
-		"when": "!editorTextFocus || neovim.mode != insert"
+		"when": "!inputFocus && !editorTextFocus || neovim.mode != insert"
 	},
 	{
 		"key": "= d",
 		"command": "workbench.action.toggleDevTools",
-		"when": "!editorTextFocus || neovim.mode != insert"
+		"when": "!inputFocus && !editorTextFocus || neovim.mode != insert"
 	},
 	/*
 		groups */
