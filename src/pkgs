@@ -10,17 +10,43 @@ alias pkr='pk -R'
 alias pko='pk -Qtdq | pk -Rns -'
 alias pku='pk -Syu'
 
-alias pkc='makepkg -si'
+alias pkc='makepkg'
+alias pkcd='pkc -so'
+alias pkci='pkc -i'
+
+pke() {
+	pkis ^${1}$ && r0 || r1
+}
+
+pkA() {
+	pkis $1 && pki $1 || pka $1
+}
 
 pka() {
+	local cwd=$PWD
+	
 	ch pkgs
-	gcl https://aur.archlinux.org/${1}.git
+	[[ $1 =~ python- ]] && cd python
+	
+	?: -d $1 || gcl https://aur.archlinux.org/${1}.git
+	
 	cd $1
-	makepkg -si
+	pkai && pkcd --noconfirm && pkci $@ || r1
+	cd $cwd
+}
+
+pkai() {
+	local deps=(`. PKGBUILD; echo ${depends[@]}`)
+	for dep in "${deps[@]}"; do
+		pk -Ss ^$dep\$ || pka $dep --noconfirm --asdeps --needed
+	done
+	r0
 }
 
 pkau() {
 	ch pkgs
 	c $1
 	g pull
+	pkc
 }
+

@@ -36,4 +36,3 @@ sndl() {
 		sleep ${2:-5}
 	done
 }
-

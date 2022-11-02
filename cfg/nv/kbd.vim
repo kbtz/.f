@@ -17,8 +17,7 @@ NL	N none createFileFromExplorer workbench.files
 NL	<ESC> :q!<CR> closeActiveEditor
 
 NL	s :w<CR> files.save
-NLL	s :wq<CR> macros.wq
-
+NL	w :call\ VSCodeNotify('macros.wq',1)<CR>
 NL	= none focusSideBar
 
 NL	c :%s///g<left><left><left> startFindReplaceAction editor

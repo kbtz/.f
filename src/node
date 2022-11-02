@@ -9,6 +9,7 @@ alias nd='n run dev'
 alias nb='n run build'
 alias nbd='n run build-data'
 alias nl='n link'
+alias nfix='sudo setcap cap_net_bind_service=+ep `which node`'
 
 alias hs='http-server -p80 -s'
 alias hsl='live-server --port=80 --host=kdev --no-browser --no-css-inject'
@@ -40,4 +41,5 @@ nIk() {
 	}
 	JSON
 }
+
 	

@@ -28,6 +28,12 @@ xpd () {
 }
 
 wat() {
+	?: -f $1 && {
+		tabs 2
+		nvimpager $1
+		r0
+	}
+	
 	read def <<< `type $1`
 	echo -n "$def "
 	

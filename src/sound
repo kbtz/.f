@@ -1,0 +1,12 @@
+alias ss='wpctl status'
+
+arec() {
+	cs recs;
+	pw-record --target=${2:-49} $1 &
+	read
+	kill -2 $!
+	echo again?
+	read
+	shh cd -
+	arec $1
+}
