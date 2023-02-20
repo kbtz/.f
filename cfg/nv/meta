@@ -33,6 +33,7 @@ word = {
 path = { 
 	__eq = function(l, r) return l.value == r.value end,
 	__tostring = function(w) return w.value end,
+	__call = function(self, p) return self.value .. '/' .. p end,
 	__index = function(p, k)
 		k = '/' .. k
 		return path.new(p.value .. k, p.alias .. k)	
@@ -42,13 +43,13 @@ path = {
 		return meta(p, path)
 	end,
 	get = vim.fn.expand,
-	call = function(_, p)
+	call = function(self, p)
 		return path.new(p)
 	end
 }
 
 meta(path, { __call = path.call })
-dots = path'~f'
+dot = path'~f'
 
 setmetatable(_G, {
 	__index = function(_, k)
@@ -69,7 +70,7 @@ use = function(files)
 end
 
 reuse = function(file)
-	if not file and path'%:p:h' == dots.cfg.nv then
+	if not file and path'%:p:h' == dot.cfg.nv then
 		file = path'%:p:t'
 	end
 
