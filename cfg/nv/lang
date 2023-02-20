@@ -1,0 +1,14 @@
+local dotfiles = vim.fn.expand('~f')
+local cfg = dotfiles .. '/cfg/'
+
+vim.filetype.add({
+	extension = {
+		glsl = 'c',
+	},
+	filename = {
+		[cfg .. 'git'] = 'gitconfig',
+	},
+	pattern = { 
+		[cfg .. 'nv/.*'] = 'lua',
+	}
+})

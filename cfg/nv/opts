@@ -1,0 +1,11 @@
+opt {
+	-expandtab,
+	tabstop/2,
+	shiftwidth/2,
+	softtabstop/0,
+
+	hlsearch,
+	-compatible,
+	clipboard/unnamed,
+	relativenumber,
+}

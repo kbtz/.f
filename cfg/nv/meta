@@ -1,0 +1,84 @@
+meta = setmetatable
+kind = getmetatable
+
+word = {
+	__tostring = function(w) return w.name end,
+	__unm = function(w) 
+		w.value = false
+		return w 
+	end,
+	__div = function(w, v)
+		w.value = v
+		return w
+	end,
+	new = function(n, v)
+		w = { name = n, value = v }
+		return setmetatable(w, word)
+	end,
+	pairs = function(t, i)
+		i = i + 1
+		local w = t[i]
+		if w and kind(w) == word then
+			return i, w.name, w.value
+		end
+	end,
+	expand = function(t)
+		for i, n, v in word.pairs, t, 0 do
+			t[n] = v
+			t[i] = nil
+		end
+	end
+}
+
+path = { 
+	__eq = function(l, r) return l.value == r.value end,
+	__tostring = function(w) return w.value end,
+	__index = function(p, k)
+		k = '/' .. k
+		return path.new(p.value .. k, p.alias .. k)	
+	end,
+	new = function(p, a)
+		p = { value = path.get(p), alias = a or p }
+		return meta(p, path)
+	end,
+	get = vim.fn.expand,
+	call = function(_, p)
+		return path.new(p)
+	end
+}
+
+meta(path, { __call = path.call })
+dots = path'~f'
+
+setmetatable(_G, {
+	__index = function(_, k)
+		return word.new(k, true)
+	end
+})
+
+del = function(key, table)
+	(table or _G)[key.name or key] = nil
+end
+
+use = function(files)
+	for _, file in pairs(files) do
+		file = tostring(file)
+		del(file, package.loaded)
+		require(file)
+	end
+end
+
+reuse = function(file)
+	if not file and path'%:p:h' == dots.cfg.nv then
+		file = path'%:p:t'
+	end
+
+	if file then use {file} end
+end
+	
+opt = function(t)
+	word.expand(t)
+	for k,v in pairs(t) do
+		vim.opt[k] = v
+	end
+end
