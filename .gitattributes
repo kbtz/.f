@@ -1,2 +1,3 @@
+bin/* linguist-language=bash
 src/* linguist-language=bash
 cfg/nv/* linguist-language=lua
