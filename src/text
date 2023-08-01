@@ -1,0 +1,22 @@
+wf() {
+	tr -sc "[A-Z][a-z][0-9]'" '[\012*]' < "$1" | \
+		tr '[A-Z]' '[a-z]' | \
+		sort | uniq -c | sort -nr | \
+		head -n200
+}
+
+wf2() {
+	tr -sc "[A-Z][a-z][0-9]'" '[\012*]' < "$1" | \
+		tr '[A-Z]' '[a-z]' | \
+		awk -- 'prev!="" { print prev,$0; } { prev=$0; }' | \
+		sort | uniq -c | sort -nr | \
+		head -n200
+}
+
+wf3() {
+	tr -sc "[A-Z][a-z][0-9]'" '[\012*]' < "$1" | \
+		tr '[A-Z]' '[a-z]' | \
+		awk -- 'first!=""&&second!="" { print first,second,$0; } { first=second; second=$0; }' | \
+		sort | uniq -c | sort -nr | \
+		head -n200
+}

@@ -1,11 +1,28 @@
 alias R='doas '
-alias ^='doas '
-alias mem='free -h'
-alias top='htop'
-alias mix='pulsemixer'
+alias RR='doas !!'
+alias mm='free -h'
+alias tt='htop'
+alias aa='pulsemixer'
+alias pp='ping 8.8.8.8'
 alias kaf='R killall -9 '
 alias brb='R reboot'
-alias bye='R poweroff'
+alias bye='R poweroff' # TODO soft kill ptys 4 bash hist
+alias bio='R efibootmgr -n 0'
+alias big='R setfont -d'
+
+
+alias rc='R rc-service'
+rcb() { rc $1 start; }
+rce() { rc $1 stop; }
+rcr() { rc $1 restart; }
+rcs() { rc $1 status; }
+
+alias n0='rce net.eth0'
+alias n1='rcr net.eth0'
+
+log() {
+	R dmesg --color=always | nvimpager
+}
 
 pss() {
 	ps aux | grep $1
@@ -54,4 +71,11 @@ spool() {
 		cat $sp > ${sp}ed
 		>$sp
 	done
+}
+
+vrum() {
+	R sh -s <<-SH
+	wrmsr -a 0x1a0 0x850089
+	echo 0 > /sys/devices/system/cpu/intel_pstate/no_turbo
+	SH
 }

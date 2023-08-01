@@ -75,6 +75,7 @@ reuse = function(file)
 	end
 
 	if file then use {file} end
+	print('Resourced', file, '...')
 end
 	
 opt = function(t)

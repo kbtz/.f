@@ -1,0 +1,101 @@
+#!/bin/awk -f
+
+# TODO roadmap
+# bare strings for assigments and calls
+
+BEGIN {
+	SC = 1
+	ID = "[$_[:alpha:]][_[:alnum:]]*"
+	TT = "^\t+"
+	for (i in ARGV) {
+		if (i < 2) continue
+		files = files " " ARGV[i]
+		delete ARGV[i]
+	}
+	
+	eval("print \"fuuck\"")
+}
+
+# Skip comment lines
+/^#/ { if(SC) next }
+
+# Skip first empty lines
+/^$/ { if(!started) next }
+/^[^$]/ { started=1 }
+
+
+## Direct replacements
+
+# Allow single quotes
+/'/ { gsub(/[^\\]'/, "\"") }
+/\\'/ { gsub(/\\'/, "'") }
+
+
+## Top level patterns
+
+# Function declarations
+# TODO default params
+# foo: bar baz -> function foo(bar, baz) {
+$0 ~ "^" ID ":" {
+	sub(": ?", "(")
+	gsub(" ", ", ")
+	$0 = "function " $0 ")"
+}
+
+# Function calls
+$0 ~ TT ID " " {
+	sub(/ "/, "(\"")
+	gsub(/ "/, ", \"")
+	$0 = $0 ")"
+}
+
+
+## Assignments
+
+# ~foo bar baz -> foo = "bar baz" foo
+$0 ~ TT "~" ID " " {
+	sub("~", "")
+	sub(" ", " = \"")
+	$0 = $0 "\" " $1
+}
+
+# foo~ bar baz -> foo = foo "bar baz"
+$0 ~ TT ID "~ " {
+	sub(ID "~ ", "&= &\"")
+	gsub("~", "")
+	$0 = $0 "\"" 
+}
+
+{
+	lines[++i] = $0
+}
+
+END {
+	for (i in lines) {
+		printf lines[i]
+		braces(lines[i],lines[i+1])
+		printf "\n"
+	}
+}
+
+function depth(s) {
+	match(s, /^\t+/)
+	return RLENGTH == -1 ? 0 : RLENGTH
+}
+
+function braces(cr, nr) {
+	cl = depth(cr)
+	nl = depth(nr)
+	
+	if (nl > cl) {
+		if(length(cr) == 0)
+			printf "\n{"
+		else
+			printf " {"
+	}
+	
+	if (cl > nl) {
+		diff = cl - nl
+		while(diff--) printf " }"
+	}
+}

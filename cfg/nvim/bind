@@ -1,14 +1,12 @@
 vim.g.mapleader = "	"
-function kmap(mode, keys)
-	for key, cmd in pairs(keys) do
-	  vim.api.nvim_set_keymap(mode, '<leader>' .. key, cmd, {})
-	end
-end
 
-kmap('n', {
-	r = ':w<cr>:lua reuse()<cr>'
-})
+vim.api.nvim_set_keymap('n', '<TAB>', '<UP>', {})
+vim.api.nvim_set_keymap('n', '<C-R>', ':w<CR>:lua reuse()<CR>', {})
 
+
+--map { bind'n' } {
+--	r/{w,reuse!}
+--}
 
 --let mapleader="-"
 --

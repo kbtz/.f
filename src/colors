@@ -1,3 +1,9 @@
+c32() {
+	for i in {0..32} ; do
+		printf "%3d \\e[48;5;%sm  \\e[0m\\e[38;5;%sm@@@\\e[0m\n" "$i" "$i" "$i"
+	done
+}
+
 c256() {
 	for i in {0..255} ; do
 		printf "%3d \\e[48;5;%sm  \\e[0m\\e[38;5;%sm@@@\\e[0m\n" "$i" "$i" "$i"

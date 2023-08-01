@@ -1,11 +1,11 @@
 layer=overlay
-font=Fira Code 32
-background-color=#111111DD
-text-color=#AAAAAAFF
-width=768
+font=Jetbrains Mono ExtraBold 32
+background-color=#333333DD
+text-color=#EEEEEEFF
+width=256
 height=256
 border-radius=8
-border-color=#AAAAAAFF
+border-color=#EEEEEEFF
 text-alignment=center
-default-timeout=2000
+default-timeout=1000
 anchor=center

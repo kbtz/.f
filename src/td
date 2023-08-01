@@ -1,9 +1,6 @@
 TD=/home/safe/todos
+TDC=today
 
-tdl() {
-	cat $TD/today
-}
-
-tde() {
-	e $TD/today
-}
+alias tdd='cd $TD'
+alias tde='e $TD/$TDC'
+alias tdl='cat $TD/$TDC'

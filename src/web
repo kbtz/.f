@@ -1,0 +1,7 @@
+w() {
+	cd /home/code/web
+	arg? c $1
+}
+
+alias fy='shopify'
+alias fyt='fy theme'

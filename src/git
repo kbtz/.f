@@ -2,6 +2,7 @@ alias g='git'
 alias gs='g status'
 alias gl='g log -2'
 alias gd='g diff'
+alias gdd='g diff --cached --'
 alias gD='g diff --staged'
 alias gcb='ga; gc bump; gu'
 alias gcbf='ga; gc bump; gu -f'
@@ -48,6 +49,6 @@ glock() {
 
 gu() {
 	glock d
-	g push $@
+	g push -u $@
 	glock e
 }

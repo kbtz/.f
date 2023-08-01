@@ -5,18 +5,35 @@ alias lT='tree -L 1 -a'
 alias lTT='tree -L 2 -a'
 alias lt='tree -d -L 1 -a'
 alias ltt='tree -d -L 2 -a'
-alias ..='cd ..'
-alias ...='cd ../..'
+alias lk='ln -s'
+lkc() { lk ~f/cfg/$1 ${2:-.}; }
 
 alias dud='du -hd1'
 alias rmr='rm -rf'
+alias rmwd='rm -r `pwd`; cd ..'
 alias cpa='cp -aux'
 alias c.='cd ~f'
 alias c-='cd -'
 
+alias mkd='mkdir -p'
+alias mkf='touch'
+
+mkD() {
+	mkd $1
+	cd $1
+}
+
+mkF() {
+	mkf $1
+	e $1
+}
+
 lnu() {
 	ln -s ../../$*
 }
+
+alias cwd='~f/run/cwd'
+alias cwdd='echo cd `pwd` > ~f/run/cwd'
 
 c() {
 	for match in $1*; do
@@ -34,26 +51,20 @@ ch() {
 	c "/home/$1"
 }
 
-cc() {
-	echo use d
-}
-
 cr() {
 	cd $(realpath ${1:-$PWD})
 }
 
 ff() {
-	unset match
-	?: $# -lt 2 && r1
+	?: $# -ge 2 || ret!
 	
-	local type=$1 search=${2/\//*/} base=${3:-.}
+	my filter=$1 search=${2/\//*/} base=${3:-.}
 	for match in ${base%*/}/{,.}{$search*,*$search*}; do
-		[ -$type $match ] || continue
-		match=`realpath $match`
-		return 0
+		[ -$filter $match ] && ret
 	done
 	
-	unset match && return 1
+	del match
+	ret!
 }
 
 alias ffm='echo $match'
@@ -63,3 +74,33 @@ fw() {
 	evs=$(sed -e "${evm[*]}" <<<${2:-U})
 	inotifywait -q -e $evs $1 ${@:3}
 }
+
+fwe() {
+	pop && loop fw $val;
+		reset && tabs 2;
+		eval $*
+	done
+}
+
+fs() {
+	grep --color -E $1 ${2:-*}
+}
+
+fsr() {
+	grep --color -E $1 * **/*
+}
+
+hi() {
+	pop
+	$* | nvimpager -c -- -c "setf $val"
+}
+
+put() {
+	my file=$1; shift
+	echo "$*" >> $file
+}
+
+..() { cd ..; arg! ret; c $1; }
+...() { cd ../..; arg! ret; c $1; }
+....() { cd ../../..; arg! ret; c $1; }
+-() { cd -; arg! ret; c $1; }

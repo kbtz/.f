@@ -4,4 +4,4 @@ package.path =
 
 require 'meta'
 
-use {opts,keys,lang,rune}
+use {conf,bind,lang,rune}

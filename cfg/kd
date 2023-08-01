@@ -1,0 +1,141 @@
+[ids]
+1a2c:2124
+
+[main]
+capslock   = tab
+enter      = enter
+leftshift  = backspace
+rightshift = space
+
+` = noop
+1 = noop
+2 = noop
+3 = noop
+4 = noop
+5 = noop
+6 = noop
+7 = noop
+8 = noop
+9 = noop
+0 = noop
+- = noop
+= = noop
+
+backspace = noop
+tab = noop
+
+q = noop
+w = timeout(q, 200, /)
+e = timeout(l, 200, @)
+r = timeout(p, 200, ')
+t = timeout(y, 200, S-[)
+y = noop
+u = timeout(m, 200, S-])
+i = timeout(g, 200, grave)
+o = timeout(c, 200, macro(C-S-u))
+p = timeout(r, 200, backslash)
+[ = noop
+] = noop
+\ = noop
+a = timeout(a, 200, -)
+s = timeout(o, 200, *)
+d = timeout(e, 200, up)
+f = timeout(u, 200, &)
+g = timeout(i, 200, S-9)
+h = overload(meta, oneshot(meta))
+j = timeout(d, 200, S-0)
+k = h
+l = timeout(t, 200, down)
+; = timeout(n, 200, =)
+' = timeout(s, 200, +)
+z = timeout(comma, 200, semicolon)
+x = timeout(z, 200, S-5)
+c = timeout(k, 200, !)
+v = timeout(j, 200, left)
+b = timeout(x, 200, S-9)
+n = timeout(b, 200, S-0)
+m = timeout(f, 200, right)
+, = timeout(w, 200, ?)
+. = v
+/ = timeout(dot, 200, :)
+
+leftcontrol = C-S-tab
+leftmeta = C-tab
+leftalt = layer(wm)
+space = overload(shift, esc)
+102nd = overload(math, oneshot(math))
+compose = togglem(move, M-m)
+ro = noop
+
+kp0 = overload(meta, 0)
+kp1 = 1
+kp2 = 2
+kp3 = 3
+kp4 = 4
+kp5 = 5
+kp6 = 6
+kp7 = 7
+kp8 = 8
+kp9 = 9
+kpenter = enter
+
+[shift]
+leftshift = M-left 
+rightshift = M-right
+
+q = noop
+w = timeout(Q, 200, \)
+e = timeout(L, 200, S-2)
+r = timeout(P, 150, ")
+t = Y
+y = noop
+u = timeout(M, 200, mute)
+i = timeout(G, 200, ~)
+o = timeout(C, 200, macro(C-S-u))
+p = timeout(R, 200, backslash)
+[ = noop
+] = noop
+\ = noop
+a = timeout(A, 200, -)
+s = timeout(O, 200, S-5)
+d = timeout(E, 200, pageup)
+f = timeout(U, 200, |)
+g = timeout(I, 200, [)
+h = overload(meta, oneshot(meta))
+j = timeout(D, 200, ])
+k = H
+l = timeout(T, 200, pagedown)
+; = timeout(N, 200, ?)
+' = timeout(S, 200, ?)
+z = timeout(S-comma, 200, semicolon)
+x = timeout(Z, 200, ?)
+c = timeout(K, 200, !)
+v = timeout(J, 200, C-left)
+b = timeout(X, 200, ^)
+n = timeout(B, 200, $)
+m = timeout(F, 200, C-right)
+, = timeout(W, 200, ?)
+. = V
+/ = timeout(S-dot, 200, :)
+
+
+[meta]
+i = toggle(move)
+h = M-tab
+leftshift = M-S-tab
+rightshift = M-tab
+esc = C-A-backspace
+
+[math]
+a = 1
+f = 2
+d = 3
+s = 4
+g = 5
+b = 6
+e = 7
+t = 8
+r = 9
+w = 0
+
+[wm:M-S]

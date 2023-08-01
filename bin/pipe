@@ -1,4 +1,0 @@
-#!/bin/bash
-pipewire-pulse &
-pipewire &
-wireplumber

@@ -1,24 +1,42 @@
 alias ?='wat'
 alias ??='xpr'
 alias ?:='test'
-alias ?x='set -x'
-alias ?X='set +x'
 alias +x='chmod +x'
+
+alias opt='shopt -s'
+alias opt!='shopt -u'
+alias debug='set -x'
+alias debug!='set +x'
+alias xdebug='opt extdebug'
+alias xdebug!='opt! extdebug'
 
 alias cl='clear && read'
 alias readln='IFS= read'
-alias ret='return '
-alias r0='return 0'
-alias r1='return 1'
-alias r?='return $?'
-
 alias mkd='mkdir -p'
 alias mkt='mktemp'
 
+alias loop='while :; do'
+alias step='read; done'
+alias next='continue'
+alias my='local'
+alias del='unset'
+
+alias and='test $? -eq 0 &&'
+alias or='test $? -eq 0 ||'
+
+alias ret='return'
+alias ret!='return 1'
+alias ret?='return $?'
+alias arg?='test $# -ne 0 &&'
+alias arg!='test $# -eq 0 &&'
+alias argc='test $# -eq'
+alias argc+='test $# -ge'
+
+alias pop='local val=$1; shift'
+
 xpr() {
-	# TODO lt gt not working?
 	expr "$@" &> /dev/null
-	return $?
+	ret?
 }
 
 xpd () {
@@ -28,29 +46,33 @@ xpd () {
 }
 
 wat() {
-	?: -f $1 && {
+	?: -f "$1" && {
 		tabs 2
 		nvimpager $1
-		r0
+		ret
 	}
 	
-	read def <<< `type $1`
+
+	my def
+	read def <<< `type "$1"`;
 	echo -n "$def "
 	
-	?: "${def: -13}" = "is a function" && {
-		color 8; loc $1; color
-		type $1 | tail -n+4 | head -n-1 \
+	?: "${def: -8:4}" = func && {
+		fn? $1
+		color 8; echo -n ${fnf/*\//} $fnl; color
+		type "$1" | tail -n+4 | head -n-1 \
 			| nvimpager -c -- -c 'setf sh'
 	} || echo
 	
-	unset def
+	del def
 }
 
-loc() {
-	shopt -s extdebug
-	local loc=(`declare -F $1 | cut -d' ' -f2-`)
-	echo ${loc[1]} ${loc[0]}
-	shopt -u extdebug
+fn?() {
+	opt extdebug
+	read __ fnl fnf < <(declare -F $1)
+	opt! extdebug
+
+	?: $fnf || ret!
 }
 
 color() {
@@ -85,4 +107,27 @@ watcher() {
 			&& sleep $interval \
 			|| read
 	done
+}
+
+h() {
+	history | grep $*
+}
+
+err() { echo "bash.f: $*" >&2; }
+
+command_not_found_handle() {
+	local cmd=${BASH_ALIASES[$1]}
+	
+	?: -n "$cmd"
+	or err "Command not found $1" 
+	and ret!
+	
+	echo "'$*' expanded to '$cmd ${@:2}'" >&2
+	$cmd ${@:2}
+}
+
+i() {
+	man $1
+	or info $1
+	or help $1
 }

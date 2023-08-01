@@ -1,6 +1,7 @@
 vim.filetype.add({
 	extension = {
 		glsl = 'c',
+		nasm = 'nasm',
 	},
 	filename = {
 		[dot.cfg'git'] = 'gitconfig',

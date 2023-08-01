@@ -1,21 +1,26 @@
 alias pk='doas pacman'
+alias pkt='doas pactree'
 
 alias pks='pk -Qs'
 alias pkm='pk -Qm'
 alias pkn='pk -Qn'
 alias pkf='pk -Qo'
 alias pki='pk -S'
+alias pkI='pk -S --noconfirm'
 alias pkis='pk -Ss'
 alias pkr='pk -R'
-alias pko='pk -Qtdq | pk -Rns -'
+alias pko='pk -Qtdq | pk -Rns - || echo -e "\e[1A\e[KNo orphans found"'
+alias pky='pk -Sy'
 alias pku='pk -Syu'
 
 alias pkc='makepkg'
 alias pkcd='pkc -so'
 alias pkci='pkc -i'
 
+alias pkec='E /etc/pacman.conf'
+
 pke() {
-	pkis ^${1}$ && r0 || r1
+	pkis ^${1}$ && ret || ret!
 }
 
 pkA() {
@@ -30,8 +35,12 @@ pka() {
 	
 	?: -d $1 || gcl https://aur.archlinux.org/${1}.git
 	
-	cd $1
-	pkai && pkcd --noconfirm && pkci $@ || r1
+	cd $1 && ?: -f PKGBUILD || { 
+		echo "$1 not on AUR"; 
+		rmwd; ret!
+	}
+	
+	pkai && pkcd --noconfirm && pkci $@ || ret!
 	cd $cwd
 }
 
@@ -40,7 +49,6 @@ pkai() {
 	for dep in "${deps[@]}"; do
 		pk -Ss ^$dep\$ || pka $dep --noconfirm --asdeps --needed
 	done
-	r0
 }
 
 pkau() {

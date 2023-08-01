@@ -1,6 +1,0 @@
-alias rk='raku'
-alias rkr='raku; reset'
-
-alias z='zef'
-alias zi='z install'
-alias zinf='z info'

@@ -1,7 +1,12 @@
 #!/bin/env -S echo -e Usage: source .f\n -- 
 
+set +x
+unalias -a
+
 source <(~f/bin/aliases ~f/src/*)
 
 for file in ~f/src/*; do
 	source $file
 done
+
+source ~f/run/cwd
