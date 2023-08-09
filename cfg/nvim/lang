@@ -1,13 +1,15 @@
-vim.filetype.add({
+dot = '/home/src/dot/' 
+
+vim.filetype.add {
 	extension = {
 		glsl = 'c',
 		nasm = 'nasm',
 	},
 	filename = {
-		[dot.cfg'git'] = 'gitconfig',
+		[dot..'cfg/git'] = 'gitconfig',
 	},
 	pattern = { 
-		[dot.src'.*'] = 'bash',
-		[dot.cfg.nv'.*'] = 'lua',
+		[dot..'src/.*'] = 'bash',
+		[dot..'cfg/nvim/.*'] = 'lua',
 	}
-})
+}

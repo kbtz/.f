@@ -1,5 +1,6 @@
 meta = setmetatable
 kind = getmetatable
+call = vim.fn.system
 
 word = {
 	__tostring = function(w) return w.name end,
@@ -13,7 +14,7 @@ word = {
 	end,
 	new = function(n, v)
 		w = { name = n, value = v }
-		return setmetatable(w, word)
+		return meta(w, word)
 	end,
 	pairs = function(t, i)
 		i = i + 1
@@ -29,27 +30,6 @@ word = {
 		end
 	end
 }
-
-path = { 
-	__eq = function(l, r) return l.value == r.value end,
-	__tostring = function(w) return w.value end,
-	__call = function(self, p) return self.value .. '/' .. p end,
-	__index = function(p, k)
-		k = '/' .. k
-		return path.new(p.value .. k, p.alias .. k)	
-	end,
-	new = function(p, a)
-		p = { value = path.get(p), alias = a or p }
-		return meta(p, path)
-	end,
-	get = vim.fn.expand,
-	call = function(self, p)
-		return path.new(p)
-	end
-}
-
-meta(path, { __call = path.call })
-dot = path'~f'
 
 setmetatable(_G, {
 	__index = function(_, k)
@@ -69,15 +49,12 @@ use = function(files)
 	end
 end
 
-reuse = function(file)
-	if not file and path'%:p:h' == dot.cfg.nv then
-		file = path'%:p:t'
-	end
-
-	if file then use {file} end
-	print('Resourced', file, '...')
+reuse = function()
+	file = vim.fn.expand('%:p:t') 
+	print('Reloading', vim.fn.stdpath('config') .. '/' .. file)
+	use { file }
 end
-	
+
 opt = function(t)
 	word.expand(t)
 	for k,v in pairs(t) do
