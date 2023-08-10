@@ -1,6 +1,6 @@
 meta = setmetatable
 kind = getmetatable
-call = vim.fn.system
+path = vim.fn.expand
 
 word = {
 	__tostring = function(w) return w.name end,
@@ -50,9 +50,9 @@ use = function(files)
 end
 
 reuse = function()
-	file = vim.fn.expand('%:p:t') 
-	print('Reloading', vim.fn.stdpath('config') .. '/' .. file)
-	use { file }
+	vim.cmd('w')
+	print('Reloading', path'%:p')
+	use { path'%:p:t' }
 end
 
 opt = function(t)

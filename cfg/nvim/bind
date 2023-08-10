@@ -1,8 +1,37 @@
 vim.g.mapleader = "	"
 
-vim.api.nvim_set_keymap('n', '<TAB>', '<UP>', {})
-vim.api.nvim_set_keymap('n', '<C-R>', ':w<CR>:lua reuse()<CR>', {})
+mode = '' -- nvo
+pair = '\t([<%a>-]+) ([<%w>-]+),'
 
+function map(key, action)
+	vim.keymap.set(mode, key, action, { noremap = true })
+end
+
+function maps(mappings)
+	for key, action in mappings:gmatch(pair) do
+		map(key, action)
+	end
+end
+
+maps[[
+	j h,	f l,	e k,	t j,
+	J b,	F w,
+
+	<Home> gg,	<End> G,
+]]
+
+mode = 'n'
+maps[[
+	E 3<C-Y>,	T 3<C-E>,
+
+	<BS> X,			<Space> x,
+	<C-BS> db,		<C-Space> de,
+
+	<Tab> <<,		<CR> >>,
+	<S-Tab> O<Esc>,	<S-CR> o<Esc>,
+]]
+
+map('<C-R>', reuse)
 
 --map { bind'n' } {
 --	r/{w,reuse!}
@@ -67,7 +96,7 @@ vim.api.nvim_set_keymap('n', '<C-R>', ':w<CR>:lua reuse()<CR>', {})
 --"" line move
 --NR	<S-TAB> <C-Y>
 --NR	<S-CR> <C-E>
---
+
 --"" move selection
 --MR	<M-TAB> none moveLinesUpAction editor
 --MR	<M-CR> none moveLinesDownAction editor
