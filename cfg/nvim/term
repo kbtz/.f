@@ -1,0 +1,11 @@
+function colors()
+	chars = V.charsAlt and 238 or 235
+	groups = {
+		NonText = chars,
+		Whitespace = chars,
+	}
+
+	for group, color in pairs(groups) do
+		vim.cmd.highlight { group .. ' ctermfg=' .. color }
+	end
+end

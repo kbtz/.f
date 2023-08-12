@@ -1,3 +1,16 @@
+agrp('auto', { clear = true })
+
+cmds = {
+	VimEnter = { callback = vars.apply },
+	VimLeavePre = { callback = vars.save },
+}
+
+for event, options in next, cmds do
+	options.group = 'auto'
+	acmd(event, options)
+end
+
+--
 --aug remember
 --    au!
 --    au BufReadPost *

@@ -1,6 +1,6 @@
 vim.g.mapleader = "	"
 
-mode = '' -- nvo
+mode = nil
 pair = '\t([<%a>-]+) ([<%w>-]+),'
 
 function map(key, action)
@@ -8,30 +8,49 @@ function map(key, action)
 end
 
 function maps(mappings)
-	for key, action in mappings:gmatch(pair) do
+	iter = type(mappings) == 'string'
+		and mappings:gmatch(pair)
+		or next
+
+	for key, action in iter, mappings do
 		map(key, action)
 	end
 end
 
+mode = '' -- nvo
 maps[[
 	j h,	f l,	e k,	t j,
 	J b,	F w,
 
 	<Home> gg,	<End> G,
+	<BS> X,		<Space> x,
 ]]
 
 mode = 'n'
 maps[[
-	E 3<C-Y>,	T 3<C-E>,
-
-	<BS> X,			<Space> x,
-	<C-BS> db,		<C-Space> de,
-
 	<Tab> <<,		<CR> >>,
+	<C-BS> db,		<C-Space> de,
 	<S-Tab> O<Esc>,	<S-CR> o<Esc>,
+
+	E 3<C-Y>,	T 3<C-E>,
+	
+	w v, W V,
 ]]
 
-map('<C-R>', reuse)
+local tgl = vars.toggle
+maps {
+	mr = reload,
+	ml = tgl.lines,
+	mc = tgl.chars,
+	mmc = tgl.charsAlt,
+	mt = tgl.tabsAlt,
+	mmt = tgl.tabs,
+}
+
+mode = 'v'
+maps[[
+	<Tab> <gv,	<CR> >gv,
+]]
 
 --map { bind'n' } {
 --	r/{w,reuse!}

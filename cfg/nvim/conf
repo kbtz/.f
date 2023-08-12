@@ -1,14 +1,13 @@
 opt {
-	-expandtab,
-	tabstop/4,
-	shiftwidth/4,
 	softtabstop/0,
 
-	-compatible,
-	clipboard/unnamedplus,
 	hlsearch,
+	-compatible,
+	-wrap,
+	clipboard/unnamedplus,
 	belloff/spell,
 
-	number,
-	relativenumber,
+	listchars/{ 
+		lead = '╶', tab = '├─', eol = '┐'
+	},
 }

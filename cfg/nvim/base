@@ -1,6 +1,8 @@
 meta = setmetatable
 kind = getmetatable
 path = vim.fn.expand
+agrp = vim.api.nvim_create_augroup
+acmd = vim.api.nvim_create_autocmd
 
 word = {
 	__tostring = function(w) return w.name end,
@@ -49,8 +51,8 @@ use = function(files)
 	end
 end
 
-reuse = function()
-	vim.cmd('w')
+reload = function()
+	vim.cmd'w'
 	print('Reloading', path'%:p')
 	use { path'%:p:t' }
 end
