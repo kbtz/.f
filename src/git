@@ -32,7 +32,7 @@ ghcl() {
 }
 
 gkcl() {
-	cc
+	ch src
 	gcl https://kbtz@github.com/kbtz/${1}.git ${2:-$1}
 }
 

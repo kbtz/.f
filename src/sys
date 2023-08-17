@@ -54,7 +54,7 @@ by() {
 	at $t <<-SH 2>/dev/null
 		echo '
 		$*
-		' > $(realpath ~f/run/spool)
+		' > $(realpath /dot/run/spool)
 	SH
 }
 
@@ -63,7 +63,7 @@ utc() {
 }
 
 spool() {
-	sp=~f/run/spool
+	my sp=/dot/run/spool
 	touch $sp
 	while :; do
 		fw $sp

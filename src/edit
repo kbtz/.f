@@ -2,21 +2,21 @@ alias e='nvim'
 alias E='doas nvim'
 alias ep='nvimpager'
 
-alias ec='em ~f/cfg'
-alias eC='em ~/.config'
-alias eb='em ~f/bin'
-alias eB='em ~/.local/bin'
-alias er='em ~f/run'
+alias ec='em $DOT/cfg'
+alias eC='em /dot/.config'
+alias eb='em $DOT/bin'
+alias eB='em /dot/.local/bin'
+alias er='em $DOT/run'
 
 es() {
-	em ~f/src $1
+	em $DOT/src $1
 	or ret!
 
-	. $match && put ~f/run/spool . $match
+	. $match && put $DOT/run/spool . $match
 }
 
 em() {
-	argc 1 && { cr $1; ret; }
+	argc 1 && { cr $1; ret!; }
 
 	ff f $2 $1
 	and e $match
@@ -35,5 +35,5 @@ ef() {
 	fn? $1 || ret!
 
 	e $fnf +$fnl -c 'norm zz'
-	. $fnf && put ~f/run/spool . $fnf
+	. $fnf && put $DOT/run/spool . $fnf
 }

@@ -1,5 +1,5 @@
 w() {
-	cd /home/code/web
+	cd /home/src/web
 	arg? c $1
 }
 

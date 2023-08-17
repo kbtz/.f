@@ -3,10 +3,11 @@
 set +x
 unalias -a
 
-source <(~f/bin/aliases ~f/src/*)
+export DOT=/dot/files
+source <($DOT/bin/aliases $DOT/src/*)
 
-for file in ~f/src/*; do
+for file in $DOT/src/*; do
 	source $file
 done
 
-source ~f/run/cwd
+source /dot/run/cwd

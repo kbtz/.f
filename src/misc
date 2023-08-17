@@ -25,12 +25,12 @@ musy() {
 }
 
 mus() {
-	ff d $1 /home/safe/music || ret!
+	ff d $1 /home/drv/music || ret!
 	mpv $match ${@:2}
 }
 
 musl() {
-	ff f $1 /home/safe/music/loop || ret!
+	ff f $1 /home/drv/music/loop || ret!
 	mpv $match ${@:2}
 }
 
@@ -39,7 +39,7 @@ musr() {
 }
 
 snd() {
-	aplay /home/safe/sound/$1.wav -D hdmi:CARD=PCH,DEV=0
+	aplay /home/drv/sound/$1.wav -D hdmi:CARD=PCH,DEV=0
 }
 
 sndl() {

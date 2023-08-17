@@ -30,29 +30,30 @@ pkA() {
 pka() {
 	local cwd=$PWD
 	
-	ch pkgs
+	ch pkg
 	[[ $1 =~ python- ]] && cd python
 	
 	?: -d $1 || gcl https://aur.archlinux.org/${1}.git
 	
-	cd $1 && ?: -f PKGBUILD || { 
+	?: -f $1/PKGBUILD || { 
 		echo "$1 not on AUR"; 
-		rmwd; ret!
+		rm -r $1; ret!
 	}
-	
-	pkai && pkcd --noconfirm && pkci $@ || ret!
+
+	cd $1 && pkai && pkcd --noconfirm && pkci $@ || ret!
 	cd $cwd
 }
 
 pkai() {
 	local deps=(`. PKGBUILD; echo ${depends[@]}`)
 	for dep in "${deps[@]}"; do
+		dep=${dep/[<=>]*/}
 		pk -Ss ^$dep\$ || pka $dep --noconfirm --asdeps --needed
 	done
 }
 
 pkau() {
-	ch pkgs
+	ch pkg
 	c $1
 	g pull
 	pkc

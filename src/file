@@ -32,8 +32,8 @@ lnu() {
 	ln -s ../../$*
 }
 
-alias cwd='~f/run/cwd'
-alias cwdd='echo cd `pwd` > ~f/run/cwd'
+alias cwd='. /dot/run/cwd'
+alias cwdd='echo cd `pwd` > /dot/run/cwd'
 
 c() {
 	for match in $1*; do
@@ -95,6 +95,7 @@ hi() {
 	$* | nvimpager -c -- -c "setf $val"
 }
 
+alias run="put /dot/run/spool"
 put() {
 	my file=$1; shift
 	echo "$*" >> $file

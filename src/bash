@@ -59,7 +59,7 @@ wat() {
 	
 	?: "${def: -8:4}" = func && {
 		fn? $1
-		color 8; echo -n ${fnf/*\//} $fnl; color
+		color 8; echo ${fnf/*\//} $fnl; color
 		type "$1" | tail -n+4 | head -n-1 \
 			| nvimpager -c -- -c 'setf sh'
 	} || echo

@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# ANSI color names and corresponding codes
+color_names=("black" "red" "green" "yellow" "blue" "magenta" "cyan" "white")
+fg_codes=(30 31 32 33 34 35 36 37)
+bg_codes=(40 41 42 43 44 45 46 47)
+
+# Display color names and previews
+for i in {0..7}; do
+    fg_color_code=${fg_codes[$i]}
+    bg_color_code=${bg_codes[$i]}
+    color_name=${color_names[$i]}
+
+    echo -e "\033[${fg_color_code}m${color_name} (fg)\033[0m\t\033[${bg_color_code}m${color_name} (bg)\033[0m"
+done
+
+for color_code in {0..255}; do
+    printf "${color_code}\x1b[38;5;${color_code}m- - \x1b[0m "
+    if ((color_code % 16 == 15)); then
+        printf "\n"
+    fi
+done
+
