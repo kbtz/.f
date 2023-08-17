@@ -20,49 +20,49 @@ rightshift = space
 0 = noop
 - = noop
 = = noop
-backspace = noop
+backspace = toggle(rus)
 
 tab = noop
 q = noop
-w = timeout(q, 200, /)
-e = timeout(l, 200, @)
-r = timeout(p, 200, ')
-t = timeout(y, 200, S-[)
+w = timeout(q, 150, /)
+e = timeout(l, 150, @)
+r = timeout(p, 150, ')
+t = timeout(y, 150, S-[)
 y = noop
-u = timeout(m, 200, S-])
-i = timeout(g, 200, grave)
-o = timeout(c, 200, macro(C-S-u))
-p = timeout(r, 200, backslash)
+u = timeout(m, 150, S-])
+i = timeout(g, 150, grave)
+o = timeout(c, 150, macro(C-S-u))
+p = timeout(r, 150, backslash)
 [ = noop
 ] = noop
 \ = noop
-a = timeout(a, 200, -)
-s = timeout(o, 200, S-6)
-d = timeout(e, 200, up)
+a = timeout(a, 150, -)
+s = timeout(o, 150, S-6)
+d = timeout(e, 150, up)
 f = u
-g = timeout(i, 200, S-9)
+g = timeout(i, 150, S-9)
 h = overload(meta, oneshot(meta))
-j = timeout(d, 200, S-0)
+j = timeout(d, 150, S-0)
 k = h
-l = timeout(t, 200, down)
-; = timeout(n, 200, S-4)
-' = timeout(s, 200, +)
-z = timeout(comma, 200, semicolon)
+l = timeout(t, 150, down)
+; = timeout(n, 150, S-4)
+' = timeout(s, 150, =)
+z = timeout(comma, 150, semicolon)
 x = z
-c = timeout(k, 200, !)
-v = timeout(j, 200, left)
-b = timeout(x, 200, [)
-n = timeout(b, 200, ])
-m = timeout(f, 200, right)
-, = timeout(w, 200, ?)
+c = timeout(k, 150, !)
+v = timeout(j, 150, left)
+b = timeout(x, 150, [)
+n = timeout(b, 150, ])
+m = timeout(f, 150, right)
+, = timeout(w, 150, ?)
 . = v
-/ = timeout(dot, 200, :)
+/ = timeout(dot, 150, :)
 
 leftcontrol = layer(control)
-leftmeta = layer(control)
+leftmeta = layer(alt)
 leftalt = layer(wm)
 space = overload(shift, esc)
-102nd = overload(math, oneshot(math))
+102nd = overload(omni, oneshot(omni))
 compose = noop
 ro = noop
 
@@ -79,8 +79,8 @@ kp9 = 9
 kpenter = enter
 
 [shift]
-leftshift = M-left 
-rightshift = M-right
+leftshift = C-backspace
+rightshift = C-space
 
 q = noop
 w = timeout(Q, 150, |)
@@ -96,19 +96,19 @@ p = timeout(R, 150, S-7)
 ] = noop
 \ = noop
 a = timeout(A, 150, S--)
-s = timeout(O, 150, C-S-tab)
-d = timeout(E, 150, pageup)
+s = timeout(O, 150, home)
+d = E
 f = U
 g = I
 h = noop
 j = D
 k = H
-l = timeout(T, 150, pagedown)
-; = timeout(N, 150, C-tab)
-' = timeout(S, 150, =)
+l = T
+; = timeout(N, 150, end)
+' = timeout(S, 150, +)
 
 z = S-comma
-x = z
+x = Z
 c = timeout(K, 150, S-5)
 v = timeout(J, 150, C-left)
 b = X
@@ -124,7 +124,7 @@ leftshift = M-S-tab
 rightshift = M-tab
 esc = C-A-backspace
 
-[math]
+[omni]
 a = 1
 f = 2
 d = 3
@@ -136,4 +136,44 @@ t = 8
 r = 9
 w = 0
 
+leftshift = C-S-tab
+rightshift = C-tab
+, = C-w
+l = C-t
+enter = C-l
+
 [wm:M-S]
+leftshift = M-left
+rightshift = M-right
+capslock = M-S-left
+enter = M-S-right
+space = M-S-s
+
+[rus]
+w = timeout(ь, 200, ъ)
+e = timeout(л, 200, S-3)
+r = timeout(п, 200, ")
+t = ы
+u = м
+i = г
+o = с
+p = р
+a = timeout(а, 200, я)
+s = о
+d = timeout(е, 200, ё)
+f = timeout(у, 200, ю)
+g = timeout(и, 200, й)
+j = д
+k = х
+l = timeout(т, 200, ц)
+; = н
+' = в
+
+x = з
+c = к
+v = ж
+b = ч
+n = б
+m = ф
+, = timeout(ш, 200, щ)
+. = э
