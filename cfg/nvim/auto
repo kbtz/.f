@@ -1,8 +1,18 @@
 agrp('auto', { clear = true })
 
+function gutterColor()
+	local mode, colors = vim.fn.mode(), {
+		n = 24, i = 0, v = 67, V = 67, [''] = 67
+	}
+
+	vim.cmd.highlight { 'LineNr ctermfg=' .. (colors[mode] or colors.n) }
+end
+
 cmds = {
 	VimEnter = { callback = vars.apply },
 	VimLeavePre = { callback = vars.save },
+	BufReadPost = { command = '\'0' },
+	ModeChanged = { callback = gutterColor },
 }
 
 for event, options in next, cmds do

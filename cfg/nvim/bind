@@ -1,10 +1,13 @@
+vim.cmd.mapclear()
 vim.g.mapleader = "	"
 
 mode = nil
-pair = '\t([<%a>-]+) ([<%w>-]+),'
+pair = '\t([<%a>-]+) ([^,]+),'
 
 function map(key, action)
-	vim.keymap.set(mode, key, action, { noremap = true })
+	vim.keymap.set(mode, key, action, {
+		noremap = true,
+	})
 end
 
 function maps(mappings)
@@ -19,25 +22,43 @@ end
 
 mode = '' -- nvo
 maps[[
-	j h,	f l,	e k,	t j,
-	J b,	F w,
+	e k,	t j,
+	n t,	o T,	N ;,
+	x b,	b e,
+	s /,	S n,
+	C r,
 
 	<Home> gg,	<End> G,
-	<BS> X,		<Space> x,
+	<BS> X,	<Space> x,
 ]]
+
+maps {
+	j = bck'\\(^\\|[^[:alnum:]]\\)\\@<=\\w',
+	f = nxt'\\(^\\|[^[:alnum:]]\\)\\@<=\\w',
+	J = bck'\\u',
+	F = nxt'\\u',
+	O = ',',
+}
 
 mode = 'n'
 maps[[
-	<Tab> <<,		<CR> >>,
-	<C-BS> db,		<C-Space> de,
+	l V,	L <C-v>,
+	n f,	o F,
+	w o,	k O,
+	W J,	K :m-2|j<CR>,
+	u u,	h <C-r>,
+	U :m-2<CR>,	H :m+1<CR>,
+	<Tab> <<,	<CR> >>,
+	<BS> X,	<Space> x,
+	<C-BS> db,	<C-Space> de,
+	E 3<C-y>,	T 3<C-e>,
+
 	<S-Tab> O<Esc>,	<S-CR> o<Esc>,
 
-	E 3<C-Y>,	T 3<C-E>,
-	
-	w v, W V,
+	<Esc> :noh<CR>,
+	M m,
 ]]
 
-local tgl = vars.toggle
 maps {
 	mr = reload,
 	ml = tgl.lines,
@@ -45,12 +66,27 @@ maps {
 	mmc = tgl.charsAlt,
 	mt = tgl.tabsAlt,
 	mmt = tgl.tabs,
+	R = 'c//e<CR>',
+	[','] = '//<CR>.',
+	['('] = 'bi',
+	['-'] = 'ea',
 }
 
 mode = 'v'
 maps[[
 	<Tab> <gv,	<CR> >gv,
+	<BS> x,	<Space> X,
 ]]
+
+maps{
+	['='] = 'y/\\V<C-r>"<CR>'
+}
+
+mode = 'i'
+maps[[
+	<C-BS> <C-p>,	<C-Space> <C-n>,
+]]
+
 
 --map { bind'n' } {
 --	r/{w,reuse!}
@@ -67,7 +103,7 @@ maps[[
 --MAP	NLL	n	<leader><leader>
 --
 --NL	r :source\ $MYVIMRC<CR>
---NLL	r :silent\ w\ <bar>\ source\ $MYVIMRC<CR> none
+--NLL	r :silent\ w\ <bar>\ source\ $MYVIMC<CR> none
 --
 --NL	n :tabe quickOpen
 --NL	N none createFileFromExplorer workbench.files
@@ -117,8 +153,8 @@ maps[[
 --NR	<S-CR> <C-E>
 
 --"" move selection
---MR	<M-TAB> none moveLinesUpAction editor
---MR	<M-CR> none moveLinesDownAction editor
+--MR	<M-TAB> none moveWordsUpAction editor
+--MR	<M-CR> none moveWordsDownAction editor
 --
 --"" scroll
 --MR	<A-TAB> :m-2<CR>==

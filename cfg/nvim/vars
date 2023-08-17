@@ -20,7 +20,7 @@ vars = {
 
 		opt {
 			list = V.chars,
-			expandtab = V.tabs,
+			expandtab = not V.tabs,
 			tabstop/tabSize,
 			shiftwidth/tabSize,
 			number = V.lines,
