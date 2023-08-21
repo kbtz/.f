@@ -1,13 +1,22 @@
 opt {
-	softtabstop/0,
+	hlsearch
+	-compatible
+	-wrap
 
-	hlsearch,
-	-compatible,
-	-wrap,
-	clipboard/unnamedplus,
-	belloff/spell,
+	[number + rnu]: linenumbers
+	
+	softtabstop: 0
+	[tabstop + shiftwidth]: tabsize,
+	[expandtab]: -spaces,
 
-	listchars/{ 
-		lead = '╶', tab = '├─', eol = '┐'
-	},
+	clipboard/unnamedplus
+	belloff/spell
+
+	[list]: -seechars
+	[listchars]: chars
+}, {
+	tabsize: { 2, 4 }
+	chars:
+		* lead: '╶', tab: '├─', eol: '┐'
+		* lead: '╶', tab: '├─', eol: ''
 }

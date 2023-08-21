@@ -1,0 +1,17 @@
+-- neovim api aliases and helpers
+global opt, tgl
+
+toggle = (k, v) ->
+	k = is.tbl(k.value) and k.value or k.name
+	v = tgl[v.name]?[1] or v.value
+	k, v
+
+opt = (input, toggles) ->
+	tgl = toggles -- TODO
+	for k, v in next, input
+		k, v = toggle k, v if is.wrd k
+		{ name: k, value: v } = v if is.num(k) and is.wrd(v)
+		if is.str k then vim.opt[k] = v
+		else vim.opt[kk] = v for kk in *k
+
+tgl = {}

@@ -1,5 +1,0 @@
-opt { conceallevel/2 }
-
---exec[[
---:h matchadd
---:h sy

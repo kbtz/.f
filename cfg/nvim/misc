@@ -1,7 +1,0 @@
-tgl = vars.toggle
-
-nxt = function(p, o)
-	return function() vim.fn.search(p, o or '') end
-end
-
-bck = function(p) return nxt(p, 'b') end

@@ -1,65 +1,56 @@
-meta = setmetatable
-kind = getmetatable
-path = vim.fn.expand
-agrp = vim.api.nvim_create_augroup
-acmd = vim.api.nvim_create_autocmd
+global kind, word, spairs, is
 
-word = {
-	__tostring = function(w) return w.name end,
-	__unm = function(w) 
-		w.value = false
-		return w 
-	end,
-	__div = function(w, v)
-		w.value = v
-		return w
-	end,
-	new = function(n, v)
-		w = { name = n, value = v }
-		return meta(w, word)
-	end,
-	pairs = function(t, i)
-		i = i + 1
-		local w = t[i]
-		if w and kind(w) == word then
-			return i, w.name, w.value
-		end
-	end,
-	expand = function(t)
-		for i, n, v in word.pairs, t, 0 do
-			t[n] = v
-			t[i] = nil
-		end
-	end
-}
+-- index symbols
+kind = {}
 
-setmetatable(_G, {
-	__index = function(_, k)
-		return word.new(k, true)
-	end
-})
+-- error handling
+err = (msg, lvl = 2) -> error msg, lvl
 
-del = function(key, table)
-	(table or _G)[key.name or key] = nil
-end
+-- word containers
+word =
+	<call>: (name) =>
+		err "Word recursion #{@name} -> #{name}" if is.wrd @
+		err 'Non string word name' unless is.str name
+		<>: word.<>, [kind]: 'wrd', :name, value: true
+	<unm>: => 
+		@value = false
+		@
+	<add>: (value) => 
+		err 'Can only add words' unless is.wrd value
+		@value = { @name } if not is.tbl @value
+		@value[] = value.name
+		@
+	<div>: (value) =>
+		value = value.name if is.wrd value
+		@value = value
+		@
+	<tostring>: => switch type(@value)
+		when 'boolean', 'table' then @name
+		else tostring(@value)
+--[[ toggle
+call next
+cycle default v f
+store cycle indexes
+restore save
+]]
+-- bare strings as words
+_G.<index> = (name) => if bare then word name
 
-use = function(files)
-	for _, file in pairs(files) do
-		file = tostring(file)
-		del(file, package.loaded)
-		require(file)
-	end
-end
 
-reload = function()
-	vim.cmd'w'
-	print('Reloading', path'%:p')
-	use { path'%:p:t' }
-end
+kpair = (kt) -> (t, k) ->
+	k, v = next(t, k)
+	k, v = next(t, k) while v? and not kt k
+	k, v
 
-opt = function(t)
-	word.expand(t)
-	for k,v in pairs(t) do
-		vim.opt[k] = v
-	end
-end
+-- iterators for specific key types
+spairs = (t) -> kpair(is.str), t
+wpairs = (t) -> kpair(is.wrd), t
+
+-- type guard helpers
+primitive =
+	num: 'number', bol: 'boolean', str: 'string',
+	fun: 'function', tbl: 'table', udt: 'userdata'
+is =
+	<call>: (x, q, t = type(x), p = primitive[q]) =>
+		t == p or (t == 'table' and q == x[kind])
+	<index>: (q) => (x) -> @ x, q
