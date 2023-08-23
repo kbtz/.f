@@ -1,0 +1,12 @@
+-- augmented bare words
+local word
+_G.<index> = (n) =>
+	<>: word.<>, [kind]: 'wrd', :n, v: true
+
+word =
+	<tostring>: => tostring(@n)
+	<index>: (k) => @n, @v if k == 'nv'
+	<call>: (w) => @n .. ' ' .. (w.n or w)
+	<unm>: =>
+		@v = false
+		@

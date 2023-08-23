@@ -1,8 +1,7 @@
 -- include extensionless config files
 package.path = vim.fn.stdpath'config' .. '/?;' .. package.path
 
--- allow bare strings
-bare = true
+-- basic bare words
 setmetatable(_G, { __index = function(_, key) return key end })
 
 function use(files)

@@ -1,56 +1,53 @@
-global kind, word, spairs, is
-
--- index symbols
-kind = {}
+global *
 
 -- error handling
-err = (msg, lvl = 2) -> error msg, lvl
+local clean = true
+err = (msg, lvl = 2) -> 
+	if clean
+		error msg, lvl
+		clean = false
+	
+-- index symbols
+kind = {'kind'}
 
--- word containers
-word =
-	<call>: (name) =>
-		err "Word recursion #{@name} -> #{name}" if is.wrd @
-		err 'Non string word name' unless is.str name
-		<>: word.<>, [kind]: 'wrd', :name, value: true
-	<unm>: => 
-		@value = false
-		@
-	<add>: (value) => 
-		err 'Can only add words' unless is.wrd value
-		@value = { @name } if not is.tbl @value
-		@value[] = value.name
-		@
-	<div>: (value) =>
-		value = value.name if is.wrd value
-		@value = value
-		@
-	<tostring>: => switch type(@value)
-		when 'boolean', 'table' then @name
-		else tostring(@value)
---[[ toggle
-call next
-cycle default v f
-store cycle indexes
-restore save
-]]
--- bare strings as words
-_G.<index> = (name) => if bare then word name
+-- type guard helpers
+local primitive =
+	num: 'number', bol: 'boolean', str: 'string',
+	fun: 'function', tbl: 'table', udt: 'userdata'
 
-
-kpair = (kt) -> (t, k) ->
-	k, v = next(t, k)
-	k, v = next(t, k) while v? and not kt k
-	k, v
+is =
+	<call>: (q, x, t = type(x), p = primitive[q]) =>
+		t == p or (t == 'table' and q == x[kind])
+	<index>: (q, s = @) => {
+		<call>: (x) => s q, x
+		<index>: (r) => (x, y) -> s(q, x) and s(r, y)
+	}
 
 -- iterators for specific key types
+kpair = (tg) -> (t, k) ->
+	k, v = next(t, k)
+	k, v = next(t, k) while v? and not tg k
+	k, v
+
 spairs = (t) -> kpair(is.str), t
 wpairs = (t) -> kpair(is.wrd), t
 
--- type guard helpers
-primitive =
-	num: 'number', bol: 'boolean', str: 'string',
-	fun: 'function', tbl: 'table', udt: 'userdata'
-is =
-	<call>: (x, q, t = type(x), p = primitive[q]) =>
-		t == p or (t == 'table' and q == x[kind])
-	<index>: (q) => (x) -> @ x, q
+-- string iterators
+local str = ''.<index>
+str.words = => @\gmatch('%S+')
+
+-- augmented bare words
+local word
+_G.<index> = (n) => word.create n
+
+word =
+	create: (n, k = 'wrd') -> 
+		<>: word.<>, [kind]: k, :n, v: true
+	<tostring>: => tostring(@n)
+	<call>: (w) => @n .. ' ' .. (w.n or w)
+	<unm>: =>
+		@v = false
+		@
+
+-- branded words
+brand = (b) -> <index>: (n) => word.create n, b.n or b

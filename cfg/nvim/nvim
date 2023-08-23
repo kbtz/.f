@@ -1,17 +1,30 @@
 -- neovim api aliases and helpers
-global opt, tgl
+global opt
 
-toggle = (k, v) ->
-	k = is.tbl(k.value) and k.value or k.name
-	v = tgl[v.name]?[1] or v.value
-	k, v
+var =
+	cur: {}
+	set: (o, v) =>
+		@cur[v.n] ??= :o, i: 1
+		v.v = @get v.n
+		print resolved, v.n, to, v.v
+		v.v
+	get: (n) =>
+		d = @def[n] or @def.flag
+		d[@cur[n].i]
+	def:
+		flag: { true, false }
+		tabsize: { 2, 4 }
+		chars:
+			* lead: '╶', tab: '├─', eol: nil
+			* lead: '╶', tab: '├─', eol: '┐'
 
-opt = (input, toggles) ->
-	tgl = toggles -- TODO
-	for k, v in next, input
-		k, v = toggle k, v if is.wrd k
-		{ name: k, value: v } = v if is.num(k) and is.wrd(v)
-		if is.str k then vim.opt[k] = v
-		else vim.opt[kk] = v for kk in *k
-
-tgl = {}
+opt = (t) ->
+	for k, v in next, t
+		{ n: k, :v } = v if is.num.wrd k, v
+		v = v.n if is.wrd v
+		v = var\set k, v if is.var v
+		vim.opt[o] = v for o in k\words!
+	
+	print Finished conf
+	for n, t in next, var.cur
+		print n, t.i, t.o

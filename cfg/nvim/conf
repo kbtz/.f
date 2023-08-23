@@ -1,22 +1,18 @@
-opt {
-	hlsearch
-	-compatible
-	-wrap
+with brand var
+	opt {
+		hlsearch
+		-compatible
+		-wrap
 
-	[number + rnu]: linenumbers
-	
-	softtabstop: 0
-	[tabstop + shiftwidth]: tabsize,
-	[expandtab]: -spaces,
+		[number rnu]: .linenumbers
+		
+		softtabstop: 0
+		expandtab: false --.spaces
+		[tabstop sw]: .tabsize
 
-	clipboard/unnamedplus
-	belloff/spell
+		clipboard: unnamedplus
+		belloff: spell
 
-	[list]: -seechars
-	[listchars]: chars
-}, {
-	tabsize: { 2, 4 }
-	chars:
-		* lead: '╶', tab: '├─', eol: '┐'
-		* lead: '╶', tab: '├─', eol: ''
-}
+		list: .seechars
+		listchars: .chars
+	}
