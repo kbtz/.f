@@ -16,11 +16,14 @@ local primitive =
 	fun: 'function', tbl: 'table', udt: 'userdata'
 
 is =
-	<call>: (q, x, t = type(x), p = primitive[q]) =>
-		t == p or (t == 'table' and q == x[kind])
-	<index>: (q, s = @) => {
-		<call>: (x) => s q, x
-		<index>: (r) => (x, y) -> s(q, x) and s(r, y)
+	<call>: (q, x, y = true, n = false) =>
+		p, t = primitive[q], type x
+		res = t == p or (t == 'table' and q == x[kind])
+		res and y or n
+	<index>: (q1, s = @) => {
+		<call>: (x, y, n) => s q1, x, y, n
+		<index>: (q2) => (x1, x2, y, n) ->
+			s(q1, x1) and s(q2, x2, y, n)
 	}
 
 -- iterators for specific key types
@@ -38,13 +41,21 @@ str.words = => @\gmatch('%S+')
 
 -- augmented bare words
 local word
-_G.<index> = (n) => word.create n
+external = ->
+	src = debug.getinfo(3, 'S').source
+	path = '@' .. vim.fn.stdpath'config' .. '/pack/'
+	src\find(path, 1, true) == 1
+
+bare = true
+_G.<index> = (n) =>
+	return nil if not bare
+	word.create n
 
 word =
 	create: (n, k = 'wrd') -> 
 		<>: word.<>, [kind]: k, :n, v: true
 	<tostring>: => tostring(@n)
-	<call>: (w) => @n .. ' ' .. (w.n or w)
+	<call>: (w = '') => @n .. ' ' .. (w.n or w)
 	<unm>: =>
 		@v = false
 		@

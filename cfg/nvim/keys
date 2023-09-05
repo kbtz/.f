@@ -1,0 +1,164 @@
+cmd mapclear
+
+map.mode = '' -- nvo
+maps[[
+	e k,	t j,
+	n t,	o T,	N ;,
+	x b,	b e,
+	s /,	S n,
+	C r,
+
+	<Home> gg,	<End> G,
+	<BS> X,	<Space> x,
+]]
+
+maps
+	j: bck'\\(^\\|[^[:alnum:]]\\)\\@<=\\w'
+	f: nxt'\\(^\\|[^[:alnum:]]\\)\\@<=\\w'
+	J: bck'\\u'
+	F: nxt'\\u'
+	O: ','
+
+map.mode = 'n'
+maps[[
+	l V,	L <C-v>,
+	n f,	o F,
+	w o,	k O,
+	W J,	K kJ,
+	u u,	h <C-r>,
+	U :m-2<CR>,	H :m+1<CR>,
+	<Tab> <<,	<CR> >>,
+	<BS> X,	<Space> x,
+	<C-BS> db,	<C-Space> de,
+	E 3<C-y>,	T 3<C-e>,
+
+	<S-Tab> O<Esc>,	<S-CR> o<Esc>,
+
+	<Esc> :noh<CR>,
+	M m,
+	R c//e<CR>,
+	( bi,	- ea,
+]]
+
+with var.toggles
+	maps 
+		[',']: '//<CR>.'
+		ml: .numbers
+--mr: reload
+--ml: tgl.lines
+--mc: tgl.chars
+--mmc: tgl.charsAlt
+--mm: tgl.tabsAlt
+--mmt: tgl.tabs
+
+map.mode = 'v'
+maps[[
+	<Tab> <gv,	<CR> >gv,
+	<BS> x,	<Space> X,
+	= y/\V<C-r>"<CR>N,
+]]
+
+map.mode = 'i'
+maps[[
+	<C-BS> <C-p>,	<C-Space> <C-n>,
+	<S-CR>f <C-x><C-f>,
+	<S-Tab> <C-x><C-o>,
+]]
+
+--agrp('lsp', { clear = true })
+--acmd('LspAttach', {
+--	group = 'lsp',
+--	callback = function(ev)
+--		vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+--	end
+--})
+--
+--map { bind'n' } {
+--	r/{w,reuse!}
+--}
+
+--let mapleader="-"
+--MAP	MR
+--MAP	NR	n
+--MAP	IR	i
+--MAP	VR	v
+--MAP	VL	v	<leader>
+--MAP	NL	n	<leader>
+--MAP	NLL	n	<leader><leader>
+--
+--NL	r :source\ $MYVIMRC<CR>
+--NLL	r :silent\ w\ <bar>\ source\ $MYVIMC<CR> none
+--
+--NL	n :tabe quickOpen
+--NL	N none createFileFromExplorer workbench.files
+--
+--NL	<ESC> :q!<CR> closeActiveEditor
+--
+--NL	s :w<CR> files.save
+--NL	w :call\ VSCodeNotify('macros.wq',1)<CR>
+--NL	= none focusSideBar
+--
+--NL	c :%s///g<left><left><left> startFindReplaceAction editor
+--NL	y none rename editor
+--
+--NL	h none showHover editor
+--NL	g none revealDefinition editor
+--NL	y none gotoSymbol
+--NL	p none triggerParameterHints editor
+--
+--"" search
+--VL v :call VSCodeNotifyVisual('noop', 1)<CR>
+--VL / y/\V<C-R>=escape(@",'/\')<CR><CR>
+--NR	<silent>\ <ESC> :noh<CR>
+--
+--"" visual
+--VR v <C-V>
+--VR i <S-I>
+--
+--MR	> >>
+--MR	< <<
+--MR	<C-SPACE> >>
+--MR	<C-A-SPACE> <<
+--
+--"" dirty new lines to keep indentation
+--NR	o ox<BS><ESC>
+--NR	O Ox<BS><ESC>
+--
+--"" moving
+--MR	<TAB> <Up>
+--MR	<CR> <Down>
+--MR	<TAB> <Up>
+--MR	<CR> <Down>
+--MR	<Home> gg
+--MR	<End> G
+--
+--"" line move
+--NR	<S-TAB> <C-Y>
+--NR	<S-CR> <C-E>
+
+--"" move selection
+--MR	<M-TAB> none moveWordsUpAction editor
+--MR	<M-CR> none moveWordsDownAction editor
+--
+--"" scroll
+--MR	<A-TAB> :m-2<CR>==
+--MR	<A-CR> :m+<CR>==
+--
+--"" snek  sssss  sssss
+--MR	f <Plug>Sneak_f
+--MR	F <Plug>Sneak_F
+--MR	, <Plug>Sneak_;
+--MR	; <Plug>Sneak_,
+--
+--"" wat ?
+--"nnoremap <C-P> a<C-R>0
+--"inoremap <C-P> <C-R>0
+--
+--"inoremap <C-CR> <C-X><C-N>
+--"inoremap <S-TAB> <C-X><C-F>
+--"inoremap '' ''<left>
+--"inoremap ' '
+--"inoremap (( ()<left>
+--"inoremap ( (
+--"inoremap [[ []<left>
+--"inoremap <leader>[ ${]}<left><left>

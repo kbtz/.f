@@ -1,0 +1,56 @@
+DEBUG = false
+
+-- basic bare words
+setmetatable(_G, {
+	__index = function(_, key) return key end
+})
+
+function use(files)
+	local yue = require 'yue'
+	for _, file in next, files do
+		if DEBUG then
+			-- #TODO compile
+			require(file)
+		else
+			yue(file)
+		end
+	end
+end
+
+if DEBUG then
+	local dap = require 'dap'
+	dap.configurations.lua = { 
+		{ 
+			type = 'nlua', 
+			request = 'attach',
+			name = "Attach to running Neovim instance",
+		}
+	}
+
+	dap.adapters.nlua = function(callback, c)
+		callback({
+			type = 'server', 
+			host = c.host or "127.0.0.1",
+			port = c.port or 8086 })
+	end
+	
+	require("dapui").setup()
+
+	local fn = {}
+	fn[5] = dap.step_into
+	fn[6] = dap.step_over
+	fn[7] = dap.continue
+	fn[8] = dap.toggle_breakpoint
+	fn[9] = function() 
+		local osv = require 'osv'
+		osv.launch({ port = 8086 })
+	end
+	fn[12] = function() 
+		local dui = require 'dapui'
+		dui.toggle()
+	end
+
+	for i, f in ipairs(fn) do
+		vim.keymap.set('n', '<F'.. i ..'>', f)
+	end
+end

@@ -1,5 +1,8 @@
+-- path to config files
+package.path =
+	vim.fn.stdpath 'config' .. '/?;'
+	.. package.path
+
 require 'moon'
 
-use { base, nvim, conf }
-
-vim.keymap.set('n', 'mm', ':set ft=lua<CR>|:set ts=4<CR>|:set sw=4<CR>')
+use { base, util, conf, misc, keys, auto }

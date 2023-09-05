@@ -1,10 +1,16 @@
-with brand var
+with brand tgl
 	opt {
+		flag: { true, false }
+		tabsize: { 2, 4 }
+		chars:
+			* lead: '╶', tab: '├─', eol: nil
+			* lead: '╶', tab: '├─', eol: '┐'
+	}, {
 		hlsearch
 		-compatible
 		-wrap
 
-		[number rnu]: .linenumbers
+		[number rnu]: .numbers
 		
 		softtabstop: 0
 		expandtab: false --.spaces

@@ -1,0 +1,5 @@
+register 'auto',
+	VimEnter: var::load
+	BufReadPost: '\'0'
+	ModeChanged: modeColor
+	VimLeavePre: var::save

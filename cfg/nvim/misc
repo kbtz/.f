@@ -1,0 +1,7 @@
+global *
+
+local modeColors = n: 24, i: 0, v: 67, V: 67, ['']: 67
+
+modeColor = ->
+	color = modeColors[vim.fn.mode!] or modeColors.n
+	cmd highlight, "LineNr ctermfg=#{color}"

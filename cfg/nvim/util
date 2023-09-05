@@ -1,0 +1,71 @@
+global *
+
+-- nvim api helpers
+
+cmd = (c, a) -> vim.cmd[c.n or c] a
+
+opt = (d, t) ->
+	var.def = d
+	for k, v in next, t
+		{ n: k, :v } = v if is.num.wrd k, v
+		v = v.n if is.wrd v
+		v = var::set k, v if is.tgl v
+		vim.opt[o] = v for o in k::words!
+
+var =
+	cur: {}, def: {}
+	set: (o, v) =>
+		@cur[v.n] ??= :o, i: 1
+		v.v = @get v.n
+		v.v
+	get: (n) =>
+		d = @def[n] or @def.flag
+		d[@cur[n].i]
+	toggles: <index>: (name) =>
+		-> var::next name
+	next: (n) =>
+		c = @cur[n]
+		d = @def[n] or @def.flag
+		c.i = c.i < #d and c.i + 1 or 1
+		@apply c, d
+	load: =>
+		V = vim.g.VARS or {}
+		print hello, V.numbers
+		for n, i in next, V
+			c = @cur[n]
+			d = @def[n] or @def.flag
+			c.i = i
+			@apply c, d
+	save: =>
+		V = {}
+		for n, c in next, @cur
+			V[n] = c.i 
+		vim.g.VARS = V
+	apply: (c, d) =>
+		for o in c.o::words!
+			vim.opt[o] = d[c.i] 
+
+nxt = (p, o = '') -> -> vim.fn.search p, o
+bck = (p) -> nxt p, 'b'
+
+map =
+	mode: ''
+	pair: '\t([^ ]+) ([^,]+),'
+
+maps = (m, iter = next) ->
+	iter = m::gmatch(map.pair) if is.str m
+	for key, action in iter, m do
+		vim.keymap.set map.mode, key, action,
+			noremap: true
+
+local agrp, acmd
+agrp = vim.api.nvim_create_augroup
+acmd = vim.api.nvim_create_autocmd
+
+register = (group, events) ->
+	agrp group, clear: true
+	for event, action in next, events do
+		type = is.str action, 'command', 'callback'
+		options = :group, [type]: action
+		acmd(event, options)
+
